@@ -28,5 +28,7 @@ public class LocatesMali_yeniCikanKitaplar {
     public WebElement satistaOlanCheckBox;
     @FindBy(xpath = "(//span[@class='custom-checkmark'])[2]")
     public WebElement stoktaOlanCheckBox;
+    @FindBy(xpath = "//div[@class='product-cr']")
+    public WebElement numberOfProduct;
 
 }

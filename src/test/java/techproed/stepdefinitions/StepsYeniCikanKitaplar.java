@@ -1,12 +1,20 @@
 package techproed.stepdefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import techproed.pages.LocatesMali_yeniCikanKitaplar;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 import techproed.utilities.ReusableMethods;
+
+import java.time.Duration;
+import java.util.List;
 
 public class StepsYeniCikanKitaplar {
     LocatesMali_yeniCikanKitaplar locate = new LocatesMali_yeniCikanKitaplar();
@@ -61,4 +69,32 @@ public class StepsYeniCikanKitaplar {
        select.selectByVisibleText("50 Ürün");
         ReusableMethods.bekle(1);
     }
-}
+
+    @Then("kullanici varsayilan olarak {string} aratir")
+    public void kullaniciVarsayilanOlarakAratir(String arg0) {
+        select=new Select(locate.varsayilanDDM);
+        select.selectByVisibleText(arg0);
+
+    }
+
+    @And("{int} saniye bekler")
+    public void saniyeBekler(int saniye) throws InterruptedException {
+        Thread.sleep(saniye*1000);
+
+    }
+
+    @Then("basligin {string} icerdigini dogrular")
+    public void basliginIcerdiginiDogrular(String arg0) {
+        Assert.assertTrue(locate.varsayilanDDM.getText().contains(arg0));
+        ReusableMethods.bekle(3);
+    }
+
+    @And("sayfada elli adet urun oldugunu dogrular")
+    public void sayfadaElliAdetUrunOldugunuDogrular() {
+      Assert.assertEquals(Driver.getDriver().
+                 findElements(By.xpath("//div[@class='product-cr']")).size(),50);
+        System.out.println("size :"+Driver.getDriver().
+                findElements(By.xpath("//div[@class='product-cr']")).size());
+        }
+
+    }
