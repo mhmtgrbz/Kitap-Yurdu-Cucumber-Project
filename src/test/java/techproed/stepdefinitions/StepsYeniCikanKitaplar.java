@@ -97,4 +97,6 @@ public class StepsYeniCikanKitaplar {
                 findElements(By.xpath("//div[@class='product-cr']")).size());
         }
 
-    }
+
+
+}
