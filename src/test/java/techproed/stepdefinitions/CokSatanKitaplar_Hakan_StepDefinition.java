@@ -5,9 +5,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.support.ui.Select;
-import techproed.pages.CokSatanKitaplar_EDebiyat_Hakan;
+import techproed.pages.CokSatanKitaplar_Edebiyat_Hakan;
 import techproed.utilities.Driver;
 import techproed.utilities.ReusableMethods;
 
@@ -15,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 
 public class CokSatanKitaplar_Hakan_StepDefinition {
 
-    CokSatanKitaplar_EDebiyat_Hakan locate = new CokSatanKitaplar_EDebiyat_Hakan();
+    CokSatanKitaplar_Edebiyat_Hakan locate = new CokSatanKitaplar_Edebiyat_Hakan();
 
     @Given("kullanici cok satan kitaplar menusu ustune gelir")
     public void kullaniciCokSatanKitaplarMenusuUstuneGelir() {
