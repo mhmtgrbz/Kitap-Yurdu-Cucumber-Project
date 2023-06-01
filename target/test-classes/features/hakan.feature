@@ -1,7 +1,13 @@
-
+@hakan
 Feature: US01 Cok satan edebiyat kitapları
 
 
+  Background: Kullanici Kitap Yurdu Sayfasina Gider
+    Given Kullanici "url" e gider
+    Then giris yap linkini tiklar
+    And eposta kutusuna mailini girer
+    And sifre kutusuna sifresini girer
+    And giris yap butonunu tiklar
 
 Given kullanici cok satan kitaplar menusu ustune gelir
     Then acilan menude cok satan edebiyat kitaplari linki oldugunu dogrular

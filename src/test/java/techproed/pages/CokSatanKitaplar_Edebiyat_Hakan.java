@@ -5,9 +5,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import techproed.utilities.Driver;
 
-public class CokSatanKitaplar_EDebiyat_Hakan {
+public class CokSatanKitaplar_Edebiyat_Hakan {
 
-    public CokSatanKitaplar_EDebiyat_Hakan(){
+    public CokSatanKitaplar_Edebiyat_Hakan(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
 

@@ -1,15 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="20.159" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Yeni Cikan Kitaplar Alani" name="TC02 Product Filter Alani" time="20.024">
-<system-out><![CDATA[
-Given Kullanici "url" e gider...............................................passed
-Then yeni cikan kitaplar linkini tiklar.....................................passed
-Then haftalik yeni cikan kitaplar linkini tiklar............................passed
-Given Kullanici zaman olarak sonikiay secer.................................passed
-And Kullanici varsayilan olarak pahalidanucuza secer........................passed
-And Kullanici satistaolanlar alanini isaretler..............................passed
-And Kullanici stoktaolanlar alanini isaretler...............................passed
-And Kullanici urun sayfa gorunumunu elli olarak isaretler...................passed
-]]></system-out>
-</testcase>
+<testsuite name="Cucumber" time="0.038" tests="0" skipped="0" failures="0" errors="0">
 </testsuite>
