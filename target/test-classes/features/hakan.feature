@@ -9,6 +9,7 @@ Feature: US01 Cok satan edebiyat kitapları
     And sifre kutusuna sifresini girer
     And giris yap butonunu tiklar
 
+    Scenario: TC01 cok satan edebiyat kitaplari sayfasi testi
 Given kullanici cok satan kitaplar menusu ustune gelir
     Then acilan menude cok satan edebiyat kitaplari linki oldugunu dogrular
     And cok satan edebiyat kitaplari linkini tiklar
