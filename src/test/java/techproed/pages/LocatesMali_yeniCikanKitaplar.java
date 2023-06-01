@@ -30,5 +30,26 @@ public class LocatesMali_yeniCikanKitaplar {
     public WebElement stoktaOlanCheckBox;
     @FindBy(xpath = "//div[@class='product-cr']")
     public WebElement numberOfProduct;
+    @FindBy(xpath = "//input[@value='TÜRKÇE']")
+    public WebElement turkceCheckbox;
+    @FindBy(xpath = "//input[@value='İNGİLİZCE']")
+    public WebElement ingCheckbox;
+    @FindBy(xpath = "//input[@name='selected_sell_price_min']")
+    public WebElement minprice;
+    @FindBy(xpath = "//input[@name='selected_sell_price_max']")
+    public WebElement maxprice;
+    @FindBy(xpath = "//span[text()='Oylama']")
+    public WebElement oylama;
+    @FindBy(xpath = "//a[@onclick='postPriceInterval();']")
+    public WebElement guncelleButton;
+    @FindBy(xpath = "(//span[@class='value'])[2]")
+    public WebElement price;
+    @FindBy(xpath = "//input[@id='search-input']")
+    public WebElement searchBox;
+
+
+
+
+
 
 }
