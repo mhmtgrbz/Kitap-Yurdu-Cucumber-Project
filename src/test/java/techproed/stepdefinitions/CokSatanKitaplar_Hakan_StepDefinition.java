@@ -123,12 +123,16 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
 
 
-        if(ikinciKitap!="" && ucuncuKitap!=""){
+        if(ikinciKitap!=null){
             assertFalse(ilkKitap.equals(ikinciKitap));
             assertFalse(ilkKitap.equals(ucuncuKitap));
+            assertFalse(ikinciKitap.equals(ilkKitap));
             assertFalse(ikinciKitap.equals(ucuncuKitap));
         }
-
+        if(ucuncuKitap!=null){
+            assertFalse(ucuncuKitap.equals(ilkKitap));
+            assertFalse(ikinciKitap.equals(ikinciKitap));
+        }
 
 
     }
