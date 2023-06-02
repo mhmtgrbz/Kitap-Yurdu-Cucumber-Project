@@ -30,7 +30,7 @@ senaryoyu çalıştırabiliriz
 
 
 
-        tags = "@hakan",
+        tags = "@hakan2",
 
         dryRun = false,
         //dryRun=false Test adımlarını kontrol eder ve browser'ı çalıştırır
