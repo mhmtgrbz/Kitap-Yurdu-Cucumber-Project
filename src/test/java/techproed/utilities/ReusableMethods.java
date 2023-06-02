@@ -2,7 +2,9 @@ package techproed.utilities;
 
 
 import org.apache.commons.io.FileUtils;
+
 import org.junit.Assert;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -269,6 +271,7 @@ public class ReusableMethods {
     public static void clickDelete(int sayi){
         Driver.getDriver().findElement(By.xpath("(//a[text()='delete'])["+sayi+"]"));
     }
+
     /**
      * @param str degeri expected metin
      * @param atr degeri actual metin
