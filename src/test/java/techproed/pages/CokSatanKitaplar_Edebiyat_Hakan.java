@@ -11,9 +11,9 @@ public class CokSatanKitaplar_Edebiyat_Hakan {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(xpath = "(//li[@class='has-open-menu']/child::span)[1]")
+    @FindBy(xpath = "(//li[@class='has-open-menu'])[1]")
     public WebElement cokSatanKitaplar;
-    @FindBy(xpath = "//a[@href='index.php?route=product/best_sellers&list_id=16&filter_in_stock=1']")
+    @FindBy(xpath = "(//a[text()='Çok Satan '])[1]")
     public WebElement cokSatanEdebiyat;
     @FindBy(xpath = "//a[@href='https://www.kitapyurdu.com/index.php?route=product/best_sellers&list_id=16&filter_in_stock=1']")
     public WebElement edebiyatButonu;
@@ -26,5 +26,8 @@ public class CokSatanKitaplar_Edebiyat_Hakan {
 
     @FindBy(xpath = "//div[@class='image']")
     public WebElement sergilenenkitaplar;
-
+    @FindBy(xpath = "//select[@class='best-sellers-list-times-select']")
+    public WebElement zamanAraligi;
+    @FindBy(xpath = "(//div[@class='product-cr'])[4]")
+    public WebElement kitaplar;
 }

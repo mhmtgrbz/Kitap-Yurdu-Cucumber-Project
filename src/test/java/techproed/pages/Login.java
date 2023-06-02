@@ -16,7 +16,7 @@ public class Login {
     public WebElement eposta;
     @FindBy(id = "login-password")
     public WebElement password;
-    @FindBy(xpath = "//button[@role='button']")
+    @FindBy(xpath = "//div//button[@role='button']")
     public WebElement girisYapButonu;
 
 

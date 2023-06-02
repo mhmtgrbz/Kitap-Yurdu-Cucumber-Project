@@ -24,7 +24,7 @@ public class Login_StepDefinition {
 
     @And("sifre kutusuna sifresini girer")
     public void sifreKutusunaSifresiniGirer() {
-        locate.eposta.sendKeys(ConfigReader.getProperty("sifreHakan"));
+        locate.password.sendKeys(ConfigReader.getProperty("sifreHakan"));
     }
 
     @And("giris yap butonunu tiklar")
