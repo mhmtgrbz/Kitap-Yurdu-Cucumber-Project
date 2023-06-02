@@ -27,11 +27,11 @@ senaryoyu çalıştırabiliriz
         glue = {"techproed/stepdefinitions"},
         //Bu parametre ile kodlarımızı yazdığımız stepDefinition
         //class'ının packege'ını belirtiriz
-<<<<<<< HEAD
-        tags = "@Excel",
-=======
+
+
+
         tags = "@hakan",
->>>>>>> master
+
         dryRun = false,
         //dryRun=false Test adımlarını kontrol eder ve browser'ı çalıştırır
         //dryRun=True Test adımlarını sadece kontrol eder

@@ -42,7 +42,7 @@ public class LocatesMali_yeniCikanKitaplar {
     public WebElement oylama;
     @FindBy(xpath = "//a[@onclick='postPriceInterval();']")
     public WebElement guncelleButton;
-    @FindBy(xpath = "(//span[@class='value'])[2]")
+    @FindBy(xpath = "//span[@class='value']")
     public WebElement price;
     @FindBy(xpath = "//input[@id='search-input']")
     public WebElement searchBox;
