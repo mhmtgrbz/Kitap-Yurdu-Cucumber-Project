@@ -137,15 +137,6 @@ public class StepsYeniCikanKitaplar {
 
     }
 
-    @And("goruntulenen ilk kitabın fiyatının {int} ile {int}  TL aralıgında oldugu test edilir")
-    public void goruntulenenIlkKitabınFiyatınınIleTLAralıgındaOlduguTestEdilir(double min, double max) {
-        String[] priceS = locate.price.getText().split(",");
-        //java double ı . ile ayırıyor, site ise , ile ayırmış .Bu yüzden küsürlü kısım ignore edildi
-        int price = Integer.parseInt(priceS[0]);
-        System.out.println("price = " + price);
-        Assert.assertTrue(min <= price && max >= price);
-
-    }
 
     @And("guncelle butonunu tiklar")
     public void guncelleButonunuTiklar() {
@@ -181,7 +172,7 @@ public class StepsYeniCikanKitaplar {
 
         }
 
-<<<<<<< HEAD
+
     }
 
     @And("kullanici searchbox alaninda exceldeki yazarlari arar")
@@ -197,9 +188,22 @@ public class StepsYeniCikanKitaplar {
     }
 
 
+    @And("goruntulenen tum kitaplarin fiyatinin {int} ile {int}  TL araliginda oldugu test edilir")
+    public void goruntulenenTumKitaplarinFiyatininIleTLAraligindaOlduguTestEdilir(double min, double max) {
+
+        //bütün ürünler için
+        List<WebElement> prices=Driver.getDriver().findElements(By.xpath("//span[@class='value']"));
+        System.out.println("ürün sayisi : "+prices.size());
+        for (int i = 0; i < prices.size(); i++) {
+            if(prices.get(i).getText().isEmpty()){continue;}
+            Double priceS=Double.valueOf(prices.get(i).getText().replace(",","."));
+            System.out.println("urunler :"+priceS);
+            Assert.assertTrue(min <= priceS && max >= priceS);
+        }
+    }
 }
-=======
 
 
-}
->>>>>>> master
+
+
+

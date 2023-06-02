@@ -1,6 +1,6 @@
 Feature: Yeni Cikan Kitaplar Alani
 
-  Background: : Kullanici Kitap Yurdu Sayfasina Gider
+  Background:  Kullanici Kitap Yurdu Sayfasina Gider
     Given Kullanici "url" e gider
     Then yeni cikan kitaplar linkini tiklar
     Then haftalik yeni cikan kitaplar linkini tiklar
@@ -40,7 +40,7 @@ Feature: Yeni Cikan Kitaplar Alani
   Scenario: TC06 Sayfadaki Urun Fiyat Aralıgı Alani
     Given Kullanici urun fiyat aralıgını dusuk 20 yuksek 50 TL olarak secer
     And guncelle butonunu tiklar
-    And goruntulenen ilk kitabın fiyatının 20 ile 50  TL aralıgında oldugu test edilir
+    And goruntulenen tum kitaplarin fiyatinin 20 ile 50  TL araliginda oldugu test edilir
 
   @Excel
   Scenario: TC07 Sayfada searcbox alanında arama
