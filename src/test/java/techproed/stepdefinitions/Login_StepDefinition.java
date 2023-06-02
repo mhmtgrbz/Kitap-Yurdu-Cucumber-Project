@@ -6,6 +6,8 @@ import techproed.pages.Locate_X;
 import techproed.pages.Login;
 import techproed.utilities.ConfigReader;
 
+import static techproed.utilities.ReusableMethods.bekle;
+
 public class Login_StepDefinition {
 
     Login locate= new Login();
@@ -24,11 +26,12 @@ public class Login_StepDefinition {
 
     @And("sifre kutusuna sifresini girer")
     public void sifreKutusunaSifresiniGirer() {
-        locate.eposta.sendKeys(ConfigReader.getProperty("sifreHakan"));
+        locate.password.sendKeys(ConfigReader.getProperty("sifreHakan"));
     }
 
     @And("giris yap butonunu tiklar")
     public void girisYapButonunuTiklar() {
         locate.girisYapButonu.click();
+        bekle(3);
     }
 }

@@ -18,3 +18,5 @@ Bunlar selenium java,webdriver manager,cucumber java,cucumber junit.
     (3 farklı senaryo çalıştırmak istersek 3 adet runner olmalıdır.)
 3- tags parametresine hangi senaryoları çalıştıracaksak onları belirttik
 4-Terminali açarak mvn clean verify yazarak aynı anda scenirio larımızı run ederiz..
+
+
