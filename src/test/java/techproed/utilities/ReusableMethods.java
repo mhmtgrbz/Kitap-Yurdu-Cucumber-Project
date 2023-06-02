@@ -2,6 +2,7 @@ package techproed.utilities;
 
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -268,4 +269,46 @@ public class ReusableMethods {
     public static void clickDelete(int sayi){
         Driver.getDriver().findElement(By.xpath("(//a[text()='delete'])["+sayi+"]"));
     }
+    /**
+     * @param str degeri expected metin
+     * @param atr degeri actual metin
+    bu metot expected metinin alertteki actual metini icerdigini dogrulamak icin
+     */
+    public static void assertTextContainsAssertTrue(String str, String atr) {
+        assertTrue(str.contains(atr));
+    }
+
+    /**Bu metot bir webelementin secili olup olmadigini dogrular
+     *  @param webElement girilecek webelement dir.
+     */
+    public void assertTrueIsSelected(WebElement webElement){
+        Assert.assertTrue(webElement.isSelected());
+    }
+
+    /** Bu metot iki string degerin birbirine equal olup olmadigini dogrular
+     @param str girilecek 1. metindir
+     @param str1 girilecek 2. metindir
+     */
+    public void assertTrueEquals(String str, String str1){
+        Assert.assertTrue(str.equals(str1));
+    }
+    /**
+     *  JavaScript ile webelement olusturma
+     * @param javascriptYolu internet sitesinden sag klik ile JS yolunu kopyala ile alınan metin olacak
+     */
+    public static WebElement webelementJavaScript(String javascriptYolu) {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        WebElement webElement = (WebElement) js.executeScript("return "+javascriptYolu+"");
+        return webElement;
+    }
+    /**
+     *  JavaScript ile webelement olusturup isEnabled oldugunu sorgulama
+     * @param str internet sitesinden sag klik ile JS yolunu kopyala ile alınan metin olacak
+     */
+    public static void assertIsEnabled(String str){
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        WebElement webElement = (WebElement) js.executeScript("return "+str+"");
+        assertTrue(webElement.isEnabled());
+    }
+
 }
