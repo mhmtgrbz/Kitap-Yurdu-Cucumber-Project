@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="57.098" tests="3" skipped="0" failures="3" errors="0">
-<testcase classname="US01 Cok satan edebiyat kitapları" name="TC02 Zaman Araligi dropdown  testi - Example #1.1" time="22.151">
-<failure type="java.lang.AssertionError">
-<![CDATA[java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:87)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertFalse(Assert.java:65)
-	at org.junit.Assert.assertFalse(Assert.java:75)
-	at techproed.stepdefinitions.CokSatanKitaplar_Hakan_StepDefinition.kullaniciSecimSonucuGoruntulenenKitaplarinDegistiginiDogrular(CokSatanKitaplar_Hakan_StepDefinition.java:130)
-	at ✽.kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular(file:///C:/Users/Hakan%20Batirhan.DESKTOP-KA8SOKR/IdeaProjects/Kitap-Yurdu-Cucumber-Project/src/test/resources/features/hakan2.feature:18)
-]]>
-</failure>
+<testsuite name="Cucumber" time="57.27" tests="3" skipped="0" failures="0" errors="0">
+<testcase classname="US01 Cok satan edebiyat kitapları" name="TC02 Zaman Araligi dropdown  testi - Example #1.1" time="22.22">
 <system-out><![CDATA[
 Given Kullanici "url" e gider...............................................passed
 Then giris yap linkini tiklar...............................................passed
@@ -23,20 +13,10 @@ And cok satan edebiyat kitaplari linkini tiklar.............................pass
 Given kullanici zaman araligi dropdown'inin secilebilir oldugunu dogrular...passed
 And 1 saniye bekleme yapar..................................................passed
 And kullanici zaman araligi dropdown'inindan "Haftalık" secenegini secer....passed
-Then kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular....failed
+Then kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular....passed
 ]]></system-out>
 </testcase>
-<testcase classname="US01 Cok satan edebiyat kitapları" name="TC02 Zaman Araligi dropdown  testi - Example #1.2" time="17.501">
-<failure type="java.lang.AssertionError">
-<![CDATA[java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:87)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertFalse(Assert.java:65)
-	at org.junit.Assert.assertFalse(Assert.java:75)
-	at techproed.stepdefinitions.CokSatanKitaplar_Hakan_StepDefinition.kullaniciSecimSonucuGoruntulenenKitaplarinDegistiginiDogrular(CokSatanKitaplar_Hakan_StepDefinition.java:128)
-	at ✽.kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular(file:///C:/Users/Hakan%20Batirhan.DESKTOP-KA8SOKR/IdeaProjects/Kitap-Yurdu-Cucumber-Project/src/test/resources/features/hakan2.feature:18)
-]]>
-</failure>
+<testcase classname="US01 Cok satan edebiyat kitapları" name="TC02 Zaman Araligi dropdown  testi - Example #1.2" time="17.567">
 <system-out><![CDATA[
 Given Kullanici "url" e gider...............................................passed
 Then giris yap linkini tiklar...............................................passed
@@ -49,20 +29,10 @@ And cok satan edebiyat kitaplari linkini tiklar.............................pass
 Given kullanici zaman araligi dropdown'inin secilebilir oldugunu dogrular...passed
 And 1 saniye bekleme yapar..................................................passed
 And kullanici zaman araligi dropdown'inindan "Aylık" secenegini secer.......passed
-Then kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular....failed
+Then kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular....passed
 ]]></system-out>
 </testcase>
-<testcase classname="US01 Cok satan edebiyat kitapları" name="TC02 Zaman Araligi dropdown  testi - Example #1.3" time="17.226">
-<failure type="java.lang.AssertionError">
-<![CDATA[java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:87)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertFalse(Assert.java:65)
-	at org.junit.Assert.assertFalse(Assert.java:75)
-	at techproed.stepdefinitions.CokSatanKitaplar_Hakan_StepDefinition.kullaniciSecimSonucuGoruntulenenKitaplarinDegistiginiDogrular(CokSatanKitaplar_Hakan_StepDefinition.java:127)
-	at ✽.kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular(file:///C:/Users/Hakan%20Batirhan.DESKTOP-KA8SOKR/IdeaProjects/Kitap-Yurdu-Cucumber-Project/src/test/resources/features/hakan2.feature:18)
-]]>
-</failure>
+<testcase classname="US01 Cok satan edebiyat kitapları" name="TC02 Zaman Araligi dropdown  testi - Example #1.3" time="17.219">
 <system-out><![CDATA[
 Given Kullanici "url" e gider...............................................passed
 Then giris yap linkini tiklar...............................................passed
@@ -75,7 +45,7 @@ And cok satan edebiyat kitaplari linkini tiklar.............................pass
 Given kullanici zaman araligi dropdown'inin secilebilir oldugunu dogrular...passed
 And 1 saniye bekleme yapar..................................................passed
 And kullanici zaman araligi dropdown'inindan "Yıllık" secenegini secer......passed
-Then kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular....failed
+Then kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular....passed
 ]]></system-out>
 </testcase>
 </testsuite>

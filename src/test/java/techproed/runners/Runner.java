@@ -27,7 +27,9 @@ senaryoyu çalıştırabiliriz
         glue = {"techproed/stepdefinitions"},
         //Bu parametre ile kodlarımızı yazdığımız stepDefinition
         //class'ının packege'ını belirtiriz
+
         tags = "@hakan2",
+
         dryRun = false,
         //dryRun=false Test adımlarını kontrol eder ve browser'ı çalıştırır
         //dryRun=True Test adımlarını sadece kontrol eder
