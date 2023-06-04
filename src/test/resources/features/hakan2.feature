@@ -16,8 +16,6 @@ Feature: US01 Cok satan edebiyat kitapları
     And 1 saniye bekleme yapar
     And  kullanici zaman araligi dropdown'inindan "<secenek>" secenegini secer
     Then kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular
-
-
     Examples:
       | secenek  |
       | Haftalık |

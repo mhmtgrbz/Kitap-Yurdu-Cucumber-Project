@@ -23,6 +23,9 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
     Select select;
     String selectZaman;
+    String ilkKitap = "";
+    String ikinciKitap = "";
+    String ucuncuKitap = "";
 
     @Given("kullanici cok satan kitaplar menusu ustune gelir")
     public void kullaniciCokSatanKitaplarMenusuUstuneGelir() {
@@ -35,17 +38,12 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
         assertTrue(locate.edebiyatButonu.getAttribute("class").equals("button"));
 
-
-        
     }
-
-
 
     @Then("yirmi urun dropdownina tiklar")
     public void yirmiUrunDropdowninaTiklar() {
         locate.yirmiUrun.click();
     }
-
 
     @Then("edebiyat butonunun resmini ceker")
     public void edebiyatButonununResminiCeker() {
@@ -86,36 +84,18 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
         select=new Select(locate.zamanAraligi);
         select.selectByVisibleText(str);
         selectZaman=str;
-    }
 
-    @Then("kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular")
-    public void kullaniciSecimSonucuGoruntulenenKitaplarinDegistiginiDogrular() {
-        String ilkKitap = "";
-        String ikinciKitap = "";
-        String ucuncuKitap = "";
         if (selectZaman.equals("Haftalık")) {
-            ilkKitap = locate.kitaplar.getText();
-            System.out.println("ilkKitap = " + ilkKitap);
+            ilkKitap = locate.kitaplar.getText().substring(0,10);
         }
         if (selectZaman.equals("Aylık")) {
-            ikinciKitap = locate.kitaplar.getText();
-            System.out.println("ikinciKitap = " + ikinciKitap);
+            ikinciKitap = locate.kitaplar.getText().substring(0,10);
         }
         if (selectZaman.equals("Yıllık"))  {
-            ucuncuKitap = locate.kitaplar.getText();
-            System.out.println("ucuncuKitap = " + ucuncuKitap);
+            ucuncuKitap = locate.kitaplar.getText().substring(0,10);
         }
 
 
-        if (ikinciKitap != null && ucuncuKitap != null) {
-            System.out.println("ilkKitap = " + ilkKitap);
-            System.out.println("ikinciKitap = " + ikinciKitap);
-            System.out.println("ucuncuKitap = " + ucuncuKitap);
-            assertFalse(ilkKitap.contains(ikinciKitap));
-            assertFalse(ilkKitap.contains(ucuncuKitap));
-            assertFalse(ikinciKitap.contains(ucuncuKitap));
-
-        }
     }
 
     @Then("Sayfanin resmini ceker")
@@ -145,6 +125,20 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
             assertTrue(Driver.getDriver().getTitle().contains("Çok Satan Kitaplar"));
 
+
+    }
+
+    @Then("kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular")
+    public void kullaniciSecimSonucuGoruntulenenKitaplarinDegistiginiDogrular() {
+        if (ilkKitap.length()>9 && ikinciKitap.length()>9 && ucuncuKitap.length()>9) {
+            System.out.println("ilkKitap = " + ilkKitap);
+            System.out.println("ikinciKitap = " + ikinciKitap);
+            System.out.println("ucuncuKitap = " + ucuncuKitap);
+            assertFalse(ilkKitap.contains(ikinciKitap));
+            assertFalse(ilkKitap.contains(ucuncuKitap));
+            assertFalse(ikinciKitap.contains(ucuncuKitap));
+
+        }
 
     }
 }
