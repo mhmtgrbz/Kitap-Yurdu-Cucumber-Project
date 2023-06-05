@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import techproed.pages.CokSatanKitaplar_Edebiyat_Hakan;
 import techproed.utilities.Driver;
+import techproed.utilities.ExcelUtils;
 import techproed.utilities.ReusableMethods;
 
 
@@ -20,6 +21,8 @@ import static org.junit.Assert.*;
 public class CokSatanKitaplar_Hakan_StepDefinition {
 
     CokSatanKitaplar_Edebiyat_Hakan locate = new CokSatanKitaplar_Edebiyat_Hakan();
+
+
 
     Select select;
     String selectZaman;
@@ -84,15 +87,24 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
         select=new Select(locate.zamanAraligi);
         select.selectByVisibleText(str);
         selectZaman=str;
-
+        ExcelUtils excelUtils=new ExcelUtils("src/test/java/techproed/resources/mysmoketestdata.xlsx", "sayfa");
         if (selectZaman.equals("Haftalık")) {
-            ilkKitap = locate.kitaplar.getText().substring(0,10);
+
+            ilkKitap = locate.kitaplar.getText();
+            System.out.println("ilkKitap = " + ilkKitap);
+            excelUtils.setCellData(ilkKitap,"A",1);
         }
         if (selectZaman.equals("Aylık")) {
-            ikinciKitap = locate.kitaplar.getText().substring(0,10);
-        }
+            ikinciKitap = locate.kitaplar.getText();
+            System.out.println("ikinciKitap = " + ikinciKitap);
+            excelUtils.setCellData(ikinciKitap,"A",2);
+            ReusableMethods.bekle(3);
+       }
         if (selectZaman.equals("Yıllık"))  {
-            ucuncuKitap = locate.kitaplar.getText().substring(0,10);
+            ucuncuKitap = locate.kitaplar.getText();
+            System.out.println("ucuncuKitap = " + ucuncuKitap);
+            excelUtils.setCellData(ucuncuKitap,"A",3);
+            ReusableMethods.bekle(3);
         }
 
 
@@ -130,15 +142,19 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
     @Then("kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular")
     public void kullaniciSecimSonucuGoruntulenenKitaplarinDegistiginiDogrular() {
-        if (ilkKitap.length()>9 && ikinciKitap.length()>9 && ucuncuKitap.length()>9) {
-            System.out.println("ilkKitap = " + ilkKitap);
-            System.out.println("ikinciKitap = " + ikinciKitap);
-            System.out.println("ucuncuKitap = " + ucuncuKitap);
-            assertFalse(ilkKitap.contains(ikinciKitap));
-            assertFalse(ilkKitap.contains(ucuncuKitap));
-            assertFalse(ikinciKitap.contains(ucuncuKitap));
+        ExcelUtils excelUtil=new ExcelUtils("src/test/java/techproed/resources/mysmoketestdata.xlsx", "sayfa");
+       String ilkKitapExcell= excelUtil.getCellData(1, 0);
+        String ikinciKitapExcell= excelUtil.getCellData(2, 0);
+        String ucuncuKitapExcell= excelUtil.getCellData(3, 0);
 
-        }
+        if(ilkKitapExcell.length()>1 && ikinciKitapExcell.length()>1 && ucuncuKitapExcell.length()>1 ){
+
+
+            assertFalse(ilkKitapExcell.contains(ikinciKitapExcell));
+            assertFalse(ilkKitapExcell.contains(ucuncuKitapExcell));
+            assertFalse(ikinciKitapExcell.contains(ucuncuKitapExcell));
+    }
+
 
     }
 }

@@ -29,7 +29,7 @@ public class CokSatanKitaplar_Edebiyat_Hakan {
 
     @FindBy(xpath = "//select[@class='best-sellers-list-times-select']")
     public WebElement zamanAraligi;
-    @FindBy(xpath = "(//div[@class='product-cr'])[4]")
+    @FindBy(xpath = "((//div[@class='product-cr'])[8]/div/a)[1]")
     public WebElement kitaplar;
 }
 
