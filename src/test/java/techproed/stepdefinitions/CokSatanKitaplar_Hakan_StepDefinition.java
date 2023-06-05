@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import techproed.pages.CokSatanKitaplar_Edebiyat_Hakan;
 import techproed.utilities.Driver;
+import techproed.utilities.ExcelUtils;
 import techproed.utilities.ReusableMethods;
 
 
@@ -21,8 +22,13 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
     CokSatanKitaplar_Edebiyat_Hakan locate = new CokSatanKitaplar_Edebiyat_Hakan();
 
+
+
     Select select;
     String selectZaman;
+    String ilkKitap = "";
+    String ikinciKitap = "";
+    String ucuncuKitap = "";
 
     @Given("kullanici cok satan kitaplar menusu ustune gelir")
     public void kullaniciCokSatanKitaplarMenusuUstuneGelir() {
@@ -35,17 +41,12 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
         assertTrue(locate.edebiyatButonu.getAttribute("class").equals("button"));
 
-
-        
     }
-
-
 
     @Then("yirmi urun dropdownina tiklar")
     public void yirmiUrunDropdowninaTiklar() {
         locate.yirmiUrun.click();
     }
-
 
     @Then("edebiyat butonunun resmini ceker")
     public void edebiyatButonununResminiCeker() {
@@ -86,36 +87,27 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
         select=new Select(locate.zamanAraligi);
         select.selectByVisibleText(str);
         selectZaman=str;
-    }
-
-    @Then("kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular")
-    public void kullaniciSecimSonucuGoruntulenenKitaplarinDegistiginiDogrular() {
-        String ilkKitap = "";
-        String ikinciKitap = "";
-        String ucuncuKitap = "";
+        ExcelUtils excelUtils=new ExcelUtils("src/test/java/techproed/resources/mysmoketestdata.xlsx", "sayfa");
         if (selectZaman.equals("Haftalık")) {
+
             ilkKitap = locate.kitaplar.getText();
             System.out.println("ilkKitap = " + ilkKitap);
+            excelUtils.setCellData(ilkKitap,"A",1);
         }
         if (selectZaman.equals("Aylık")) {
             ikinciKitap = locate.kitaplar.getText();
             System.out.println("ikinciKitap = " + ikinciKitap);
-        }
+            excelUtils.setCellData(ikinciKitap,"A",2);
+            ReusableMethods.bekle(3);
+       }
         if (selectZaman.equals("Yıllık"))  {
             ucuncuKitap = locate.kitaplar.getText();
             System.out.println("ucuncuKitap = " + ucuncuKitap);
+            excelUtils.setCellData(ucuncuKitap,"A",3);
+            ReusableMethods.bekle(3);
         }
 
 
-        if (ikinciKitap != null && ucuncuKitap != null) {
-            System.out.println("ilkKitap = " + ilkKitap);
-            System.out.println("ikinciKitap = " + ikinciKitap);
-            System.out.println("ucuncuKitap = " + ucuncuKitap);
-            assertFalse(ilkKitap.contains(ikinciKitap));
-            assertFalse(ilkKitap.contains(ucuncuKitap));
-            assertFalse(ikinciKitap.contains(ucuncuKitap));
-
-        }
     }
 
     @Then("Sayfanin resmini ceker")
@@ -144,6 +136,24 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
     public void kullaniciCokSatanEdebiyatKitaplariSayfasindaOldugunuDogrular() {
 
             assertTrue(Driver.getDriver().getTitle().contains("Çok Satan Kitaplar"));
+
+
+    }
+
+    @Then("kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular")
+    public void kullaniciSecimSonucuGoruntulenenKitaplarinDegistiginiDogrular() {
+        ExcelUtils excelUtil=new ExcelUtils("src/test/java/techproed/resources/mysmoketestdata.xlsx", "sayfa");
+       String ilkKitapExcell= excelUtil.getCellData(1, 0);
+        String ikinciKitapExcell= excelUtil.getCellData(2, 0);
+        String ucuncuKitapExcell= excelUtil.getCellData(3, 0);
+
+        if(ilkKitapExcell.length()>1 && ikinciKitapExcell.length()>1 && ucuncuKitapExcell.length()>1 ){
+
+
+            assertFalse(ilkKitapExcell.contains(ikinciKitapExcell));
+            assertFalse(ilkKitapExcell.contains(ucuncuKitapExcell));
+            assertFalse(ikinciKitapExcell.contains(ucuncuKitapExcell));
+    }
 
 
     }
