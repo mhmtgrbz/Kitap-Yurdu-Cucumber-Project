@@ -89,22 +89,19 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
         selectZaman=str;
         ExcelUtils excelUtils=new ExcelUtils("src/test/java/techproed/resources/mysmoketestdata.xlsx", "sayfa");
         if (selectZaman.equals("Haftalık")) {
+            excelUtils.setCellData("",1,0);
+           excelUtils.setCellData(locate.kitaplar.getText(),1,0);
 
-            ilkKitap = locate.kitaplar.getText();
-            System.out.println("ilkKitap = " + ilkKitap);
-            excelUtils.setCellData(ilkKitap,"A",1);
         }
         if (selectZaman.equals("Aylık")) {
-            ikinciKitap = locate.kitaplar.getText();
-            System.out.println("ikinciKitap = " + ikinciKitap);
-            excelUtils.setCellData(ikinciKitap,"A",2);
-            ReusableMethods.bekle(3);
+            excelUtils.setCellData("",2,0);
+            excelUtils.setCellData(locate.kitaplar.getText(),2,0);
+
        }
         if (selectZaman.equals("Yıllık"))  {
-            ucuncuKitap = locate.kitaplar.getText();
-            System.out.println("ucuncuKitap = " + ucuncuKitap);
-            excelUtils.setCellData(ucuncuKitap,"A",3);
-            ReusableMethods.bekle(3);
+            excelUtils.setCellData("",3,0);
+           excelUtils.setCellData(locate.kitaplar.getText(),3,0);
+
         }
 
 
@@ -142,12 +139,12 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
     @Then("kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular")
     public void kullaniciSecimSonucuGoruntulenenKitaplarinDegistiginiDogrular() {
-        ExcelUtils excelUtil=new ExcelUtils("src/test/java/techproed/resources/mysmoketestdata.xlsx", "sayfa");
+        ExcelUtils excelUtil=new ExcelUtils("src/test/resources/kitapyurdu.xlsx", "Sayfa1");
        String ilkKitapExcell= excelUtil.getCellData(1, 0);
         String ikinciKitapExcell= excelUtil.getCellData(2, 0);
         String ucuncuKitapExcell= excelUtil.getCellData(3, 0);
 
-        if(ilkKitapExcell.length()>1 && ikinciKitapExcell.length()>1 && ucuncuKitapExcell.length()>1 ){
+        if(ilkKitapExcell.length()>3 && ikinciKitapExcell.length()>3 && ucuncuKitapExcell.length()>3 ){
 
 
             assertFalse(ilkKitapExcell.contains(ikinciKitapExcell));
