@@ -89,15 +89,18 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
         selectZaman=str;
         ExcelUtils excelUtils=new ExcelUtils("src/test/java/techproed/resources/mysmoketestdata.xlsx", "sayfa");
         if (selectZaman.equals("Haftalık")) {
-            excelUtils.setCellData(locate.kitaplar.getText(),1,0);
+            excelUtils.setCellData("",1,0);
+           excelUtils.setCellData(locate.kitaplar.getText(),1,0);
 
         }
         if (selectZaman.equals("Aylık")) {
+            excelUtils.setCellData("",2,0);
             excelUtils.setCellData(locate.kitaplar.getText(),2,0);
 
        }
         if (selectZaman.equals("Yıllık"))  {
-            excelUtils.setCellData(locate.kitaplar.getText(),3,0);
+            excelUtils.setCellData("",3,0);
+           excelUtils.setCellData(locate.kitaplar.getText(),3,0);
 
         }
 
