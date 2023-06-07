@@ -1,43 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<testsuite name="Cucumber" time="58.52" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Yeni Cikan Kitaplar Alani" name="TC06 Sayfada searcbox alanında arama" time="58.349">
+<testsuite name="Cucumber" time="31.945" tests="2" skipped="0" failures="0" errors="0">
+<testcase classname="Yeni Cikan Kitaplar Alani" name="TC08 Sayfa kaydırma butonları" time="19.682">
 <system-out><![CDATA[
 Given Kullanici "url" e gider...............................................passed
 Then yeni cikan kitaplar linkini tiklar.....................................passed
 Then haftalik yeni cikan kitaplar linkini tiklar............................passed
-Given Kullanici searchbox alanında exceldeki kitapları arar.................passed
-And kullanici searchbox alaninda exceldeki yayinevlerini arar...............passed
-And kullanici searchbox alaninda exceldeki yazarlari arar...................passed
-=======
-<testsuite name="Cucumber" time="18.642" tests="1" skipped="0" failures="1" errors="0">
-<testcase classname="US01 Cok satan edebiyat kitapları" name="TC01 cok satan edebiyat kitaplari sayfasi testi" time="18.459">
-<failure type="java.lang.AssertionError">
-<![CDATA[java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:87)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertTrue(Assert.java:53)
-	at techproed.stepdefinitions.CokSatanKitaplar_Hakan_StepDefinition.acilanMenudeCokSatanEdebiyatKitaplariLinkiOldugunuDogrular(CokSatanKitaplar_Hakan_StepDefinition.java:26)
-	at ✽.acilan menude cok satan edebiyat kitaplari linki oldugunu dogrular(file:///C:/Users/Hakan%20Batirhan.DESKTOP-KA8SOKR/IdeaProjects/Kitap-Yurdu-Cucumber-Project/src/test/resources/features/hakan.feature:14)
-]]>
-</failure>
+Given Kullanici sayfa sonuna kaydirma butonuna tiklar.......................passed
+And 1 saniye bekler.........................................................passed
+And sayfa resmini alir......................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Yeni Cikan Kitaplar Alani" name="TC09 Oneri Dogrulama Alanı Capctha Negatif test" time="12.074">
 <system-out><![CDATA[
 Given Kullanici "url" e gider...............................................passed
-Then giris yap linkini tiklar...............................................passed
-And eposta kutusuna mailini girer...........................................passed
-And sifre kutusuna sifresini girer..........................................passed
-And giris yap butonunu tiklar...............................................passed
-Given kullanici cok satan kitaplar menusu ustune gelir......................passed
-Then acilan menude cok satan edebiyat kitaplari linki oldugunu dogrular.....failed
-And cok satan edebiyat kitaplari linkini tiklar.............................skipped
-When kullanici cok satan kitaplar sayfasinda oldugunu dogrular..............skipped
-And edebiyat butonunun secilmis oldugunu dogrular...........................skipped
-And satista olanlar checkboxinin secili oldugunu dogrular...................skipped
-Then yirmi urun dropdownina tiklar..........................................skipped
-And yuz urunu secer.........................................................skipped
-And yuz urun seceneginin secildigini dogrular...............................skipped
-And sayfada yuz urun gorundugunu dogrular...................................skipped
->>>>>>> master
+Then yeni cikan kitaplar linkini tiklar.....................................passed
+Then haftalik yeni cikan kitaplar linkini tiklar............................passed
+Given Kullanici oneri form ikonunu tiklar...................................passed
+And Acilan pencerede isim alanını doldurur..................................passed
+Then e posta alanını doldurur...............................................passed
+Then Konu alanına Oneri seklinde giris yapar................................passed
+And Gorus alanina dokuzchar gorusunu yazar..................................passed
+And Kullanici dogrulama alanına yanlıs bir deger girer......................passed
+Then Kullanici gonder butonunu tiklar.......................................passed
+And Kabul edilmeyen karakter sayisi uyarisini goruntuler....................passed
+And dogrulama kodu hatalidir mesajini goruntuler............................passed
 ]]></system-out>
 </testcase>
 </testsuite>

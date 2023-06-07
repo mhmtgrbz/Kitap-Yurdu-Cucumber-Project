@@ -47,6 +47,34 @@ public class LocatesMali_yeniCikanKitaplar {
     @FindBy(xpath = "//input[@id='search-input']")
     public WebElement searchBox;
 
+    @FindBy(id= "bottom-button")
+    public WebElement goPageDownButton;
+
+    @FindBy(id= "suggest-button")
+    public WebElement suggestButton;
+
+    @FindBy(xpath = "//*[@name='name']")
+    public WebElement suggestFormName;
+
+    @FindBy(xpath = "//*[@name='email']")
+    public WebElement suggestFormEmail;
+    @FindBy(xpath = "//select[@name='subject']")
+    public WebElement subjectDDM;
+    @FindBy(xpath = "//*[@name='enquiry']")
+    public WebElement gorus;
+    @FindBy(id= "feedback_captcha")
+    public WebElement feedbackCaptcha;
+    @FindBy(xpath = "(//span[@class='error'])[1]")
+    public WebElement errorMessageCommend;
+    @FindBy(xpath = "(//span[@class='error'])[2]")
+    public WebElement errorMessageCode;
+
+    @FindBy(xpath = "//*[@onclick='submitFeedbackForm(this)']")
+    public WebElement submitForm;
+
+
+
+
 
 
 

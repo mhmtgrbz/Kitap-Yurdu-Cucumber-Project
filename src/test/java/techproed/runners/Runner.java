@@ -30,7 +30,7 @@ senaryoyu çalıştırabiliriz
 
 
 
-        tags = "@hakan",
+        tags = "@suggestForm",
 
         dryRun = false,
         //dryRun=false Test adımlarını kontrol eder ve browser'ı çalıştırır
