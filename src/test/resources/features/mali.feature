@@ -62,7 +62,7 @@ Feature: Yeni Cikan Kitaplar Alani
     Then Konu alanına Oneri seklinde giris yapar
     And Gorus alanina dokuzchar gorusunu yazar
     And Kullanici dogrulama alanına yanlıs bir deger girer
-     Then Kullanici gonder butonunu tiklar
+    Then Kullanici gonder butonunu tiklar
     And Kabul edilmeyen karakter sayisi uyarisini goruntuler
     And dogrulama kodu hatalidir mesajini goruntuler
 

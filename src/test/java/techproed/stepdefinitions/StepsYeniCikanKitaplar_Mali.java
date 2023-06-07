@@ -1,28 +1,23 @@
 package techproed.stepdefinitions;
 
 import com.github.javafaker.Faker;
-import com.sun.source.tree.AssertTree;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.sl.In;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import techproed.pages.LocatesMali_yeniCikanKitaplar;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 import techproed.utilities.ExcelUtils;
 import techproed.utilities.ReusableMethods;
 
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
-public class StepsYeniCikanKitaplar {
+public class StepsYeniCikanKitaplar_Mali {
     LocatesMali_yeniCikanKitaplar locate = new LocatesMali_yeniCikanKitaplar();
     Select select;
 
