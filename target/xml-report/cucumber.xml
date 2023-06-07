@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<testsuite name="Cucumber" time="31.945" tests="2" skipped="0" failures="0" errors="0">
+<testcase classname="Yeni Cikan Kitaplar Alani" name="TC08 Sayfa kaydırma butonları" time="19.682">
+<system-out><![CDATA[
+Given Kullanici "url" e gider...............................................passed
+Then yeni cikan kitaplar linkini tiklar.....................................passed
+Then haftalik yeni cikan kitaplar linkini tiklar............................passed
+Given Kullanici sayfa sonuna kaydirma butonuna tiklar.......................passed
+And 1 saniye bekler.........................................................passed
+And sayfa resmini alir......................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Yeni Cikan Kitaplar Alani" name="TC09 Oneri Dogrulama Alanı Capctha Negatif test" time="12.074">
+<system-out><![CDATA[
+Given Kullanici "url" e gider...............................................passed
+Then yeni cikan kitaplar linkini tiklar.....................................passed
+Then haftalik yeni cikan kitaplar linkini tiklar............................passed
+Given Kullanici oneri form ikonunu tiklar...................................passed
+And Acilan pencerede isim alanını doldurur..................................passed
+Then e posta alanını doldurur...............................................passed
+Then Konu alanına Oneri seklinde giris yapar................................passed
+And Gorus alanina dokuzchar gorusunu yazar..................................passed
+And Kullanici dogrulama alanına yanlıs bir deger girer......................passed
+Then Kullanici gonder butonunu tiklar.......................................passed
+And Kabul edilmeyen karakter sayisi uyarisini goruntuler....................passed
+And dogrulama kodu hatalidir mesajini goruntuler............................passed
+=======
 <testsuite name="Cucumber" time="80.545" tests="3" skipped="0" failures="3" errors="0">
 <testcase classname="US01 Cok satan edebiyat kitapları" name="TC03 Zaman Araligi dropdown  testi - Example #1.1" time="45.817">
 <failure type="org.openqa.selenium.ElementNotInteractableException" message="element not interactable
@@ -101,6 +128,7 @@ Given kullanici zaman araligi dropdown'inin secilebilir oldugunu dogrular...pass
 And 1 saniye bekleme yapar..................................................passed
 And kullanici zaman araligi dropdown'inindan "Yıllık" seceneklerini sirayla secer.passed
 Then kullanici secim sonucunda kitaplarin degistigini dogrular..............failed
+>>>>>>> master
 ]]></system-out>
 </testcase>
 </testsuite>

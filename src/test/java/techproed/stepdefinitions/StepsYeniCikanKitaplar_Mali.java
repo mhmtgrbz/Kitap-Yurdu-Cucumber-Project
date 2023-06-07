@@ -1,27 +1,23 @@
 package techproed.stepdefinitions;
 
-import com.sun.source.tree.AssertTree;
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.sl.In;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import techproed.pages.LocatesMali_yeniCikanKitaplar;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 import techproed.utilities.ExcelUtils;
 import techproed.utilities.ReusableMethods;
 
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
-public class StepsYeniCikanKitaplar {
+public class StepsYeniCikanKitaplar_Mali {
     LocatesMali_yeniCikanKitaplar locate = new LocatesMali_yeniCikanKitaplar();
     Select select;
 
@@ -200,6 +196,77 @@ public class StepsYeniCikanKitaplar {
             System.out.println("urunler :"+priceS);
             Assert.assertTrue(min <= priceS && max >= priceS);
         }
+    }
+
+    @Given("Kullanici sayfa sonuna kaydirma butonuna tiklar")
+    public void kullaniciSayfaSonunaKaydirmaButonunaTiklar() {
+        locate.goPageDownButton.click();
+    }
+
+    @And("sayfa resmini alir")
+    public void sayfaResminiAlir() {
+        ReusableMethods.tumSayfaResmi();
+    }
+
+    @Given("Kullanici oneri form ikonunu tiklar")
+    public void kullaniciOneriFormIkonunuTiklar() {
+        locate.suggestButton.click();
+    }
+
+    @And("Acilan pencerede isim alanını doldurur")
+    public void acilanPenceredeIsimAlanınıDoldurur() {
+        locate.suggestFormName.sendKeys(Faker.instance().name().fullName());
+        ReusableMethods.bekle(1);
+
+    }
+
+    @And("e posta alanını doldurur")
+    public void ePostaAlanınıDoldurur() {
+        locate.suggestFormEmail.sendKeys(Faker.instance().internet().emailAddress());
+        ReusableMethods.bekle(1);
+    }
+
+    @And("Konu alanına Oneri seklinde giris yapar")
+    public void konuAlanınaOneriSeklindeGirisYapar() {
+        select=new Select(locate.subjectDDM);
+        select.selectByValue("1");
+
+        ReusableMethods.bekle(1);
+    }
+
+
+    @And("Gorus alanina dokuzchar gorusunu yazar")
+    public void gorusAlaninaDokuzcharGorusunuYazar() {
+        locate.gorus.sendKeys("Abcdefgh9");
+        ReusableMethods.bekle(1);
+
+    }
+
+    @And("Kabul edilmeyen karakter sayisi uyarisini goruntuler")
+    public void kabulEdilmeyenKarakterSayisiUyarisiniGoruntuler() {
+        ReusableMethods.bekle(1);
+        Assert.assertTrue(locate.errorMessageCommend.isDisplayed());
+    }
+
+    @And("Gorus alanına ONchar gorusunu yazar")
+    public void gorusAlanınaONcharGorusunuYazar() {
+        locate.gorus.sendKeys(Faker.instance().letterify("Abcdefgh10"));
+    }
+
+    @Given("Kullanici dogrulama alanına yanlıs bir deger girer")
+    public void kullaniciDogrulamaAlanınaYanlısBirDegerGirer() {
+        locate.feedbackCaptcha.sendKeys(Faker.instance().code().ean8());
+
+    }
+
+    @And("dogrulama kodu hatalidir mesajini goruntuler")
+    public void dogrulamaKoduHatalidirMesajiniGoruntuler() {
+        Assert.assertTrue(locate.errorMessageCode.isDisplayed());
+    }
+
+    @Then("Kullanici gonder butonunu tiklar")
+    public void kullaniciGonderButonunuTiklar() {
+        locate.submitForm.click();
     }
 }
 
