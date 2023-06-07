@@ -10,12 +10,19 @@ import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.support.ui.Select;
 import techproed.pages.CokSatanKitaplar_Edebiyat_Hakan;
+import techproed.pojo.EdebiyatKitaplariPojo;
+import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 import techproed.utilities.ExcelUtils;
 import techproed.utilities.ReusableMethods;
 
 
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
+import static techproed.utilities.ReusableMethods.*;
 
 
 public class CokSatanKitaplar_Hakan_StepDefinition {
@@ -152,6 +159,106 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
             assertFalse(ikinciKitapExcell.contains(ucuncuKitapExcell));
     }
 
+
+    }
+
+    @And("kullanici zaman araligi dropdown'inindan {string} seceneklerini sirayla secer")
+    public void kullaniciZamanAraligiDropdownInindanSecenekleriniSiraylaSecer(String str) throws ClassNotFoundException, SQLException {
+        List<EdebiyatKitaplariPojo> kayitlar=new ArrayList<>();
+
+        Class.forName("org.postgresql.Driver");
+
+
+        //2.adim Database'e baglanma
+        Connection con = DriverManager.getConnection(
+                "jdbc:postgresql://localhost:5432/jdbc",
+                "postgres",
+                ConfigReader.getProperty("postgresPassword"));
+        //3. statement
+        Statement st = con.createStatement();
+
+        //4. adim edebiyatKitaplari tablosu olusturacagim
+
+        try {
+            String sql01= "create table edebiyatkitaplaripojo(id int primary key, isim varchar(30) unique)";
+            st.execute(sql01);
+        }catch (Exception e) {
+
+        }
+
+
+        select=new Select(locate.zamanAraligi);
+        select.selectByVisibleText(str);
+        selectZaman=str;
+
+        //5.adim pojo class kullanarak tabloya veri ekleyecegim
+
+        if (selectZaman.equals("Haftalık")) {
+            try{
+                kayitlar.add(new EdebiyatKitaplariPojo(1,locate.kitaplar.getText()));
+            }catch (Exception e){
+
+            }
+
+        }
+        if (selectZaman.equals("Aylık")) {
+            try{
+                kayitlar.add(new EdebiyatKitaplariPojo(2,locate.kitaplar.getText()));
+            }catch (Exception e){
+
+            }
+        }
+        if (selectZaman.equals("Yıllık"))  {
+            try{
+                kayitlar.add(new EdebiyatKitaplariPojo(3,locate.kitaplar.getText()));
+            }catch (Exception e){
+
+            }
+        }
+
+        PreparedStatement data = con.prepareStatement("insert into edebiyatkitaplaripojo values(?, ?)");
+
+        for(EdebiyatKitaplariPojo each: kayitlar){
+            data.setInt(1, each.getId());
+            data.setString(2, each.getIsim());
+            data.addBatch();    //Dataları bir araya getirir
+        }
+        data.executeBatch(); //tek seferde datalari yollar
+
+        con.close();
+        data.close();
+        closeConnection();  //2 kapatma komutu yerine bu tek metot yeter.
+    }
+
+
+    @Then("kullanici secim sonucunda kitaplarin degistigini dogrular")
+    public void kullaniciSecimSonucundaKitaplarinDegistiginiDogrular() {
+        createConnection(); //utilities den metot cagirarak baglanti, dosyayi okuma, ekleme vb. yapiyoruz.
+        String sql01 = "select * from edebiyatkitaplaripojo";
+        System.out.println("Sutun isimleri " + getColumnNames(sql01));
+        List<Object> actualDataId= getColumnData(sql01, "id");
+        List<Object> actualDataIsimler= getColumnData(sql01, "isimler");
+
+        String ilkKitap="";
+        String ikinciKitap="";
+        String ucuncuKitap="";
+        int sayac=0;
+        for (Object obje:actualDataIsimler){
+            if(sayac==0){
+                ilkKitap=  obje.toString();
+            }
+            if(sayac==1){
+                ikinciKitap=  obje.toString();
+            }
+            if(sayac==3){
+                ucuncuKitap=  obje.toString();
+            }
+        }
+        assertFalse(ilkKitap.contains(ikinciKitap));
+        assertFalse(ilkKitap.contains(ucuncuKitap));
+        assertFalse(ikinciKitap.contains(ucuncuKitap));
+
+        closeConnection();
 
     }
 }
