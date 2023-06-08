@@ -57,7 +57,7 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
     @Then("edebiyat butonunun resmini ceker")
     public void edebiyatButonununResminiCeker() {
-        ReusableMethods.webElementScreenShoot(locate.edebiyatButonu);
+        ReusableMethods.webElementResmi(locate.edebiyatButonu);
     }
 
     @And("satista olanlar checkboxinin secili oldugunu dogrular")
@@ -117,7 +117,7 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
     @Then("Sayfanin resmini ceker")
     public void sayfaninResminiCeker() {
-        ReusableMethods.tumSayfaScreenShoot();
+        ReusableMethods.tumSayfaResmi();
     }
 
     @And("{int} saniye bekleme yapar")
