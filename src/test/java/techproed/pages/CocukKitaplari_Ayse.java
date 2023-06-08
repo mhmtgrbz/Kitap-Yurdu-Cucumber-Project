@@ -6,9 +6,11 @@ import org.openqa.selenium.support.PageFactory;
 import techproed.utilities.Driver;
 public class CocukKitaplari_Ayse {
 
-    public CocukKitaplari_Ayse(){
-        PageFactory.initElements(Driver.getDriver(),this);
-    }
+
+public CocukKitaplari_Ayse(){
+    PageFactory.initElements(Driver.getDriver(),this);
+}
+
 
     @FindBy(xpath = "//img[@class='desktop-block']")
     public   WebElement logo;
@@ -50,8 +52,7 @@ public class CocukKitaplari_Ayse {
     public WebElement clickMail;
     @FindBy(xpath = "//a[text()='E-posta Adresimi Doğrula →']")
     public WebElement adresiDogrula;
-    //@FindBy(xpath = "//div[@class='attention']")
-    // public WebElement anasayfayaGit;
+
     @FindBy(xpath = "//div[@class='success']")
     public WebElement dogrulamaMesaji;
     @FindBy(xpath = "//h1")
@@ -60,5 +61,37 @@ public class CocukKitaplari_Ayse {
     public WebElement devam;
     @FindBy(xpath = "//a[@class='common-sprite']")
     public WebElement merhaba;
+
+    @FindBy(xpath = "//input[@id='login-email']")
+    public WebElement eposta;
+    @FindBy(xpath = "//input[@id='login-password']")
+    public WebElement password;
+    @FindBy(xpath = "(//span[@class='custom-checkmark'])[2]")
+    public WebElement stoktaOlanlar;
+    @FindBy(linkText = "Genel")
+    public WebElement genel;
+
+    @FindBy(xpath = "//h1")
+    public WebElement kitap1;
+
+    @FindBy(xpath = "//span[text()='Sepete Ekle']")
+    public WebElement sepet;
+    @FindBy(xpath = "//h2")
+    public WebElement onay;
+
+    @FindBy(xpath = "//div[@class='results']")
+    public WebElement kacKitap;
+    @FindBy(xpath = "(//span[@class='facet-name'])[20]")
+    public WebElement ziya;
+
+
+
+
+
+
+
+
+
+
 
 }
