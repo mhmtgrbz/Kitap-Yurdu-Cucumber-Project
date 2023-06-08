@@ -34,4 +34,6 @@ public class Login_StepDefinition {
         locate.girisYapButonu.click();
         bekle(3);
     }
+
+
 }

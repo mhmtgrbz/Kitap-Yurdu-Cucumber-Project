@@ -60,13 +60,27 @@ public CocukKitaplari_Ayse(){
     public WebElement devam;
     @FindBy(xpath = "//a[@class='common-sprite']")
     public WebElement merhaba;
+    @FindBy(xpath = "//input[@id='login-email']")
+    public WebElement eposta;
+    @FindBy(xpath = "//input[@id='login-password']")
+    public WebElement password;
+    @FindBy(xpath = "(//span[@class='custom-checkmark'])[2]")
+    public WebElement stoktaOlanlar;
+    @FindBy(linkText = "Genel")
+    public WebElement genel;
 
+    @FindBy(xpath = "//h1")
+    public WebElement kitap1;
 
+    @FindBy(xpath = "//span[text()='Sepete Ekle']")
+    public WebElement sepet;
+    @FindBy(xpath = "//h2")
+    public WebElement onay;
 
-
-
-
-
+    @FindBy(xpath = "//div[@class='results']")
+    public WebElement kacKitap;
+    @FindBy(xpath = "(//span[@class='facet-name'])[20]")
+    public WebElement ziya;
 
 
 
