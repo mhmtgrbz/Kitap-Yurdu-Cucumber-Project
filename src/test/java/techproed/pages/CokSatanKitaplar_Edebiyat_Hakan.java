@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import techproed.utilities.Driver;
 
+
 public class CokSatanKitaplar_Edebiyat_Hakan {
 
     public CokSatanKitaplar_Edebiyat_Hakan(){
@@ -27,4 +28,10 @@ public class CokSatanKitaplar_Edebiyat_Hakan {
     @FindBy(xpath = "//div[@class='image']")
     public WebElement sergilenenkitaplar;
 
+    @FindBy(xpath = "//select[@class='best-sellers-list-times-select']")
+    public WebElement zamanAraligi;
+    @FindBy(xpath = "((//div[@class='product-cr'])[8]/div/a)[1]")
+    public WebElement kitaplar;
 }
+
+

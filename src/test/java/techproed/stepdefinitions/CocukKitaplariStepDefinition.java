@@ -2,8 +2,10 @@ package techproed.stepdefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WindowType;
 import techproed.pages.CocukKitaplari_Ayse;
@@ -72,11 +74,11 @@ public class CocukKitaplariStepDefinition {
 
     }
 
-
     @Then("cok satan {string} linkine tiklar")
     public void cokSatanLinkineTiklar(String cocukKitaplari) {
         click(page.cokSatanCocukKitaplarilinki);
     }
+
 
     @And("uyari mesajni gorur")
     public void uyariMesajniGorur() {
@@ -314,5 +316,11 @@ public class CocukKitaplariStepDefinition {
         throw new io.cucumber.java.PendingException();
     }
 
+
+
+    @Then("cok satan cocuk kitaplari linkine tiklar")
+    public void cokSatanCocukKitaplariLinkineTiklar() {
+        page.cokSatanCocukKitaplarilinki.click();
+    }
 
 }

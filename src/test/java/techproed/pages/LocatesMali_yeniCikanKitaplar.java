@@ -30,5 +30,54 @@ public class LocatesMali_yeniCikanKitaplar {
     public WebElement stoktaOlanCheckBox;
     @FindBy(xpath = "//div[@class='product-cr']")
     public WebElement numberOfProduct;
+    @FindBy(xpath = "//input[@value='TÜRKÇE']")
+    public WebElement turkceCheckbox;
+    @FindBy(xpath = "//input[@value='İNGİLİZCE']")
+    public WebElement ingCheckbox;
+    @FindBy(xpath = "//input[@name='selected_sell_price_min']")
+    public WebElement minprice;
+    @FindBy(xpath = "//input[@name='selected_sell_price_max']")
+    public WebElement maxprice;
+    @FindBy(xpath = "//span[text()='Oylama']")
+    public WebElement oylama;
+    @FindBy(xpath = "//a[@onclick='postPriceInterval();']")
+    public WebElement guncelleButton;
+    @FindBy(xpath = "//span[@class='value']")
+    public WebElement price;
+    @FindBy(xpath = "//input[@id='search-input']")
+    public WebElement searchBox;
+
+    @FindBy(id= "bottom-button")
+    public WebElement goPageDownButton;
+
+    @FindBy(id= "suggest-button")
+    public WebElement suggestButton;
+
+    @FindBy(xpath = "//*[@name='name']")
+    public WebElement suggestFormName;
+
+    @FindBy(xpath = "//*[@name='email']")
+    public WebElement suggestFormEmail;
+    @FindBy(xpath = "//select[@name='subject']")
+    public WebElement subjectDDM;
+    @FindBy(xpath = "//*[@name='enquiry']")
+    public WebElement gorus;
+    @FindBy(id= "feedback_captcha")
+    public WebElement feedbackCaptcha;
+    @FindBy(xpath = "(//span[@class='error'])[1]")
+    public WebElement errorMessageCommend;
+    @FindBy(xpath = "(//span[@class='error'])[2]")
+    public WebElement errorMessageCode;
+
+    @FindBy(xpath = "//*[@onclick='submitFeedbackForm(this)']")
+    public WebElement submitForm;
+
+
+
+
+
+
+
+
 
 }

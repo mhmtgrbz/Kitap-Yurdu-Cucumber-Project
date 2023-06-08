@@ -6,9 +6,11 @@ import org.openqa.selenium.support.PageFactory;
 import techproed.utilities.Driver;
 public class CocukKitaplari_Ayse {
 
+
 public CocukKitaplari_Ayse(){
     PageFactory.initElements(Driver.getDriver(),this);
 }
+
 
     @FindBy(xpath = "//img[@class='desktop-block']")
     public   WebElement logo;
@@ -50,8 +52,7 @@ public CocukKitaplari_Ayse(){
     public WebElement clickMail;
     @FindBy(xpath = "//a[text()='E-posta Adresimi Doğrula →']")
     public WebElement adresiDogrula;
-    //@FindBy(xpath = "//div[@class='attention']")
-   // public WebElement anasayfayaGit;
+
     @FindBy(xpath = "//div[@class='success']")
     public WebElement dogrulamaMesaji;
     @FindBy(xpath = "//h1")
@@ -60,6 +61,7 @@ public CocukKitaplari_Ayse(){
     public WebElement devam;
     @FindBy(xpath = "//a[@class='common-sprite']")
     public WebElement merhaba;
+
     @FindBy(xpath = "//input[@id='login-email']")
     public WebElement eposta;
     @FindBy(xpath = "//input[@id='login-password']")
@@ -81,7 +83,6 @@ public CocukKitaplari_Ayse(){
     public WebElement kacKitap;
     @FindBy(xpath = "(//span[@class='facet-name'])[20]")
     public WebElement ziya;
-
 
 
 
