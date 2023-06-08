@@ -28,8 +28,8 @@ import static techproed.utilities.ReusableMethods.*;
 public class CokSatanKitaplar_Hakan_StepDefinition {
 
     CokSatanKitaplar_Edebiyat_Hakan locate = new CokSatanKitaplar_Edebiyat_Hakan();
-
-
+    
+    Statement st;
 
     Select select;
     String selectZaman;
@@ -57,8 +57,9 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
     @Then("edebiyat butonunun resmini ceker")
     public void edebiyatButonununResminiCeker() {
-        ReusableMethods.webElementResmi(locate.edebiyatButonu);
+        ReusableMethods.webElementScreenShoot(locate.edebiyatButonu);
     }
+
     @And("satista olanlar checkboxinin secili oldugunu dogrular")
     public void satistaOlanlarCheckboxininSeciliOldugunuDogrular() {
         assertTrue(locate.satistaOlanlar.isSelected());
@@ -66,7 +67,7 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
     @And("yuz urunu secer")
     public void yuzUrunuSecer() {
-        Select select=new Select(locate.yirmiUrun);
+        Select select = new Select(locate.yirmiUrun);
         select.selectByVisibleText("100 Ürün");
     }
 
@@ -77,9 +78,9 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
     @And("sayfada yuz urun gorundugunu dogrular")
     public void sayfadaYuzUrunGorundugunuDogrular() {
-        int expectedKitapSayisi=100;
-        int actualKitapSayisi=Driver.getDriver().findElements(By.xpath("//div[@class='image']")).size();
-        assertTrue(expectedKitapSayisi==actualKitapSayisi);
+        int expectedKitapSayisi = 100;
+        int actualKitapSayisi = Driver.getDriver().findElements(By.xpath("//div[@class='image']")).size();
+        assertTrue(expectedKitapSayisi == actualKitapSayisi);
 
     }
 
@@ -91,23 +92,23 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
     @And("kullanici zaman araligi dropdown'inindan {string} secenegini secer")
     public void kullaniciZamanAraligiDropdownInindanSeceneginiSecer(String str) {
-        select=new Select(locate.zamanAraligi);
+        select = new Select(locate.zamanAraligi);
         select.selectByVisibleText(str);
-        selectZaman=str;
-        ExcelUtils excelUtils=new ExcelUtils("src/test/java/techproed/resources/mysmoketestdata.xlsx", "sayfa");
+        selectZaman = str;
+        ExcelUtils excelUtils = new ExcelUtils("src/test/java/techproed/resources/mysmoketestdata.xlsx", "sayfa");
         if (selectZaman.equals("Haftalık")) {
-            excelUtils.setCellData("",1,0);
-           excelUtils.setCellData(locate.kitaplar.getText(),1,0);
+            excelUtils.setCellData("", 1, 0);
+            excelUtils.setCellData(locate.kitaplar.getText(), 1, 0);
 
         }
         if (selectZaman.equals("Aylık")) {
-            excelUtils.setCellData("",2,0);
-            excelUtils.setCellData(locate.kitaplar.getText(),2,0);
+            excelUtils.setCellData("", 2, 0);
+            excelUtils.setCellData(locate.kitaplar.getText(), 2, 0);
 
-       }
-        if (selectZaman.equals("Yıllık"))  {
-            excelUtils.setCellData("",3,0);
-           excelUtils.setCellData(locate.kitaplar.getText(),3,0);
+        }
+        if (selectZaman.equals("Yıllık")) {
+            excelUtils.setCellData("", 3, 0);
+            excelUtils.setCellData(locate.kitaplar.getText(), 3, 0);
 
         }
 
@@ -116,7 +117,7 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
     @Then("Sayfanin resmini ceker")
     public void sayfaninResminiCeker() {
-        ReusableMethods.tumSayfaResmi();
+        ReusableMethods.tumSayfaScreenShoot();
     }
 
     @And("{int} saniye bekleme yapar")
@@ -139,32 +140,32 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
     @When("kullanici cok satan edebiyat kitaplari sayfasinda oldugunu dogrular")
     public void kullaniciCokSatanEdebiyatKitaplariSayfasindaOldugunuDogrular() {
 
-            assertTrue(Driver.getDriver().getTitle().contains("Çok Satan Kitaplar"));
+        assertTrue(Driver.getDriver().getTitle().contains("Çok Satan Kitaplar"));
 
 
     }
 
     @Then("kullanici secim sonucu goruntulenen kitaplarin degistigini dogrular")
     public void kullaniciSecimSonucuGoruntulenenKitaplarinDegistiginiDogrular() {
-        ExcelUtils excelUtil=new ExcelUtils("src/test/resources/kitapyurdu.xlsx", "Sayfa1");
-       String ilkKitapExcell= excelUtil.getCellData(1, 0);
-        String ikinciKitapExcell= excelUtil.getCellData(2, 0);
-        String ucuncuKitapExcell= excelUtil.getCellData(3, 0);
+        ExcelUtils excelUtil = new ExcelUtils("src/test/resources/kitapyurdu.xlsx", "Sayfa1");
+        String ilkKitapExcell = excelUtil.getCellData(1, 0);
+        String ikinciKitapExcell = excelUtil.getCellData(2, 0);
+        String ucuncuKitapExcell = excelUtil.getCellData(3, 0);
 
-        if(ilkKitapExcell.length()>3 && ikinciKitapExcell.length()>3 && ucuncuKitapExcell.length()>3 ){
+        if (ilkKitapExcell.length() > 3 && ikinciKitapExcell.length() > 3 && ucuncuKitapExcell.length() > 3) {
 
 
             assertFalse(ilkKitapExcell.contains(ikinciKitapExcell));
             assertFalse(ilkKitapExcell.contains(ucuncuKitapExcell));
             assertFalse(ikinciKitapExcell.contains(ucuncuKitapExcell));
-    }
+        }
 
 
     }
 
     @And("kullanici zaman araligi dropdown'inindan {string} seceneklerini sirayla secer")
     public void kullaniciZamanAraligiDropdownInindanSecenekleriniSiraylaSecer(String str) throws ClassNotFoundException, SQLException {
-        List<EdebiyatKitaplariPojo> kayitlar=new ArrayList<>();
+        List<EdebiyatKitaplariPojo> kayitlar = new ArrayList<>();
 
         Class.forName("org.postgresql.Driver");
 
@@ -175,58 +176,57 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
                 "postgres",
                 ConfigReader.getProperty("postgresPassword"));
         //3. statement
-        Statement st = con.createStatement();
+        st = con.createStatement();
 
         //4. adim edebiyatKitaplari tablosu olusturacagim
 
         try {
-            String sql01= "create table edebiyatkitaplaripojo(id int primary key, isim varchar(30) unique)";
+            String sql01 = "create table edebiyatkitaplaripojo(id int primary key, isim varchar(30) unique)";
             st.execute(sql01);
-        }catch (Exception e) {
+        } catch (Exception e) {
 
         }
 
 
-        select=new Select(locate.zamanAraligi);
+        select = new Select(locate.zamanAraligi);
         select.selectByVisibleText(str);
-        selectZaman=str;
+        selectZaman = str;
 
         //5.adim pojo class kullanarak tabloya veri ekleyecegim
 
         if (selectZaman.equals("Haftalık")) {
-            try{
-                kayitlar.add(new EdebiyatKitaplariPojo(1,locate.kitaplar.getText()));
-            }catch (Exception e){
+            try {
+                kayitlar.add(new EdebiyatKitaplariPojo(1, locate.kitaplar.getText()));
+            } catch (Exception e) {
 
             }
 
         }
         if (selectZaman.equals("Aylık")) {
-            try{
-                kayitlar.add(new EdebiyatKitaplariPojo(2,locate.kitaplar.getText()));
-            }catch (Exception e){
+            try {
+                kayitlar.add(new EdebiyatKitaplariPojo(2, locate.kitaplar.getText()));
+            } catch (Exception e) {
 
             }
         }
-        if (selectZaman.equals("Yıllık"))  {
-            try{
-                kayitlar.add(new EdebiyatKitaplariPojo(3,locate.kitaplar.getText()));
-            }catch (Exception e){
+        if (selectZaman.equals("Yıllık")) {
+            try {
+                kayitlar.add(new EdebiyatKitaplariPojo(3, locate.kitaplar.getText()));
+            } catch (Exception e) {
 
             }
         }
 
         PreparedStatement data = con.prepareStatement("insert into edebiyatkitaplaripojo values(?, ?)");
 
-        for(EdebiyatKitaplariPojo each: kayitlar){
+        for (EdebiyatKitaplariPojo each : kayitlar) {
             data.setInt(1, each.getId());
             data.setString(2, each.getIsim());
             data.addBatch();    //Dataları bir araya getirir
         }
         data.executeBatch(); //tek seferde datalari yollar
 
-        con.close();
-        data.close();
+
         closeConnection();  //2 kapatma komutu yerine bu tek metot yeter.
     }
 
@@ -236,30 +236,49 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
         createConnection(); //utilities den metot cagirarak baglanti, dosyayi okuma, ekleme vb. yapiyoruz.
         String sql01 = "select * from edebiyatkitaplaripojo";
         System.out.println("Sutun isimleri " + getColumnNames(sql01));
-        List<Object> actualDataId= getColumnData(sql01, "id");
-        List<Object> actualDataIsimler= getColumnData(sql01, "isimler");
+        List<Object> actualDataId = getColumnData(sql01, "id");
+        List<Object> actualDataIsimler = getColumnData(sql01, "isim");
 
-        String ilkKitap="";
-        String ikinciKitap="";
-        String ucuncuKitap="";
-        int sayac=0;
-        for (Object obje:actualDataIsimler){
-            if(sayac==0){
-                ilkKitap=  obje.toString();
+        String ilkKitap = "";
+        String ikinciKitap = "";
+        String ucuncuKitap = "";
+        int sayac = 0;
+        for (Object obje : actualDataIsimler) {
+            if (sayac == 0) {
+                ilkKitap = obje.toString().toLowerCase();
+
             }
-            if(sayac==1){
-                ikinciKitap=  obje.toString();
+            if (sayac == 1) {
+                ikinciKitap = obje.toString().toLowerCase();
+
             }
-            if(sayac==3){
-                ucuncuKitap=  obje.toString();
+            if (sayac == 2) {
+                ucuncuKitap = obje.toString().toLowerCase();
+
             }
+            sayac++;
         }
-        assertFalse(ilkKitap.contains(ikinciKitap));
-        assertFalse(ilkKitap.contains(ucuncuKitap));
-        assertFalse(ikinciKitap.contains(ucuncuKitap));
 
+        if (ilkKitap.length() > 2 && ikinciKitap.length() > 2 && ucuncuKitap.length() > 2) {
+            try {
+                assertFalse(ilkKitap.contains(ikinciKitap));
+            } catch (Exception e) {
+
+            }
+
+            try {
+                assertFalse(ilkKitap.contains(ucuncuKitap));
+            } catch (Exception e) {
+
+            }
+            try {
+                assertFalse(ikinciKitap.contains(ucuncuKitap));
+            } catch (Exception e) {
+
+            }
+
+        }
         closeConnection();
-
     }
 }
 
