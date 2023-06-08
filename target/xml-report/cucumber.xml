@@ -1,106 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="80.545" tests="3" skipped="0" failures="3" errors="0">
-<testcase classname="US01 Cok satan edebiyat kitapları" name="TC03 Zaman Araligi dropdown  testi - Example #1.1" time="45.817">
-<failure type="org.openqa.selenium.ElementNotInteractableException" message="element not interactable
-  (Session info: chrome=114.0.5735.110)
-Build info: version: '4.8.3', revision: 'e5e76298c3'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.18'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [af0d64cfe086f9ef98e8713373fb217c, clickElement {id=B98A77140D5A79C52098379E4647A5CF_element_107}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.110, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\HAKANB~1.DES\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:63691}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:63691/devtoo..., se:cdpVersion: 114.0.5735.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [org.openqa.selenium.remote.RemoteWebElement@5e8d0d6 -&gt; unknown locator]
-Session ID: af0d64cfe086f9ef98e8713373fb217c">
-<![CDATA[org.openqa.selenium.ElementNotInteractableException: element not interactable
-  (Session info: chrome=114.0.5735.110)
-Build info: version: '4.8.3', revision: 'e5e76298c3'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.18'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [af0d64cfe086f9ef98e8713373fb217c, clickElement {id=B98A77140D5A79C52098379E4647A5CF_element_107}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.110, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\HAKANB~1.DES\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:63691}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:63691/devtoo..., se:cdpVersion: 114.0.5735.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [org.openqa.selenium.remote.RemoteWebElement@5e8d0d6 -> unknown locator]
-Session ID: af0d64cfe086f9ef98e8713373fb217c
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:193)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:183)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:257)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:78)
-	at techproed.stepdefinitions.CokSatanKitaplar_Hakan_StepDefinition.cokSatanEdebiyatKitaplariLinkiniTiklar(CokSatanKitaplar_Hakan_StepDefinition.java:134)
-	at ✽.cok satan edebiyat kitaplari linkini tiklar(file:///C:/Users/Hakan%20Batirhan.DESKTOP-KA8SOKR/IdeaProjects/Kitap-Yurdu-Cucumber-Project/src/test/resources/features/hakan3.feature:14)
-]]>
-</failure>
+<testsuite name="Cucumber" time="41.014" tests="3" skipped="0" failures="0" errors="0">
+<testcase classname="US01 Cok satan edebiyat kitapları" name="TC03 Zaman Araligi dropdown  testi - Example #1.1" time="15.573">
 <system-out><![CDATA[
 Given Kullanici "url" e gider...............................................passed
-Then giris yap linkini tiklar...............................................passed
-And eposta kutusuna mailini girer...........................................passed
-And sifre kutusuna sifresini girer..........................................passed
-And giris yap butonunu tiklar...............................................passed
 Then kullanici cok satan kitaplar menusu ustune gelir.......................passed
 And 3 saniye bekleme yapar..................................................passed
-And cok satan edebiyat kitaplari linkini tiklar.............................failed
-Given kullanici zaman araligi dropdown'inin secilebilir oldugunu dogrular...skipped
-And 1 saniye bekleme yapar..................................................skipped
-And kullanici zaman araligi dropdown'inindan "Haftalık" seceneklerini sirayla secer.skipped
-Then kullanici secim sonucunda kitaplarin degistigini dogrular..............skipped
+And cok satan edebiyat kitaplari linkini tiklar.............................passed
+Given kullanici zaman araligi dropdown'inin secilebilir oldugunu dogrular...passed
+And 1 saniye bekleme yapar..................................................passed
+And kullanici zaman araligi dropdown'inindan "Haftalık" seceneklerini sirayla secer.passed
+Then kullanici secim sonucunda kitaplarin degistigini dogrular..............passed
 ]]></system-out>
 </testcase>
-<testcase classname="US01 Cok satan edebiyat kitapları" name="TC03 Zaman Araligi dropdown  testi - Example #1.2" time="17.366">
-<failure type="java.lang.AssertionError">
-<![CDATA[java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:87)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertFalse(Assert.java:65)
-	at org.junit.Assert.assertFalse(Assert.java:75)
-	at techproed.stepdefinitions.CokSatanKitaplar_Hakan_StepDefinition.kullaniciSecimSonucundaKitaplarinDegistiginiDogrular(CokSatanKitaplar_Hakan_StepDefinition.java:256)
-	at ✽.kullanici secim sonucunda kitaplarin degistigini dogrular(file:///C:/Users/Hakan%20Batirhan.DESKTOP-KA8SOKR/IdeaProjects/Kitap-Yurdu-Cucumber-Project/src/test/resources/features/hakan3.feature:18)
-]]>
-</failure>
+<testcase classname="US01 Cok satan edebiyat kitapları" name="TC03 Zaman Araligi dropdown  testi - Example #1.2" time="12.891">
 <system-out><![CDATA[
 Given Kullanici "url" e gider...............................................passed
-Then giris yap linkini tiklar...............................................passed
-And eposta kutusuna mailini girer...........................................passed
-And sifre kutusuna sifresini girer..........................................passed
-And giris yap butonunu tiklar...............................................passed
 Then kullanici cok satan kitaplar menusu ustune gelir.......................passed
 And 3 saniye bekleme yapar..................................................passed
 And cok satan edebiyat kitaplari linkini tiklar.............................passed
 Given kullanici zaman araligi dropdown'inin secilebilir oldugunu dogrular...passed
 And 1 saniye bekleme yapar..................................................passed
 And kullanici zaman araligi dropdown'inindan "Aylık" seceneklerini sirayla secer.passed
-Then kullanici secim sonucunda kitaplarin degistigini dogrular..............failed
+Then kullanici secim sonucunda kitaplarin degistigini dogrular..............passed
 ]]></system-out>
 </testcase>
-<testcase classname="US01 Cok satan edebiyat kitapları" name="TC03 Zaman Araligi dropdown  testi - Example #1.3" time="17.045">
-<failure type="java.lang.AssertionError">
-<![CDATA[java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:87)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertFalse(Assert.java:65)
-	at org.junit.Assert.assertFalse(Assert.java:75)
-	at techproed.stepdefinitions.CokSatanKitaplar_Hakan_StepDefinition.kullaniciSecimSonucundaKitaplarinDegistiginiDogrular(CokSatanKitaplar_Hakan_StepDefinition.java:256)
-	at ✽.kullanici secim sonucunda kitaplarin degistigini dogrular(file:///C:/Users/Hakan%20Batirhan.DESKTOP-KA8SOKR/IdeaProjects/Kitap-Yurdu-Cucumber-Project/src/test/resources/features/hakan3.feature:18)
-]]>
-</failure>
+<testcase classname="US01 Cok satan edebiyat kitapları" name="TC03 Zaman Araligi dropdown  testi - Example #1.3" time="12.329">
 <system-out><![CDATA[
 Given Kullanici "url" e gider...............................................passed
-Then giris yap linkini tiklar...............................................passed
-And eposta kutusuna mailini girer...........................................passed
-And sifre kutusuna sifresini girer..........................................passed
-And giris yap butonunu tiklar...............................................passed
 Then kullanici cok satan kitaplar menusu ustune gelir.......................passed
 And 3 saniye bekleme yapar..................................................passed
 And cok satan edebiyat kitaplari linkini tiklar.............................passed
 Given kullanici zaman araligi dropdown'inin secilebilir oldugunu dogrular...passed
 And 1 saniye bekleme yapar..................................................passed
 And kullanici zaman araligi dropdown'inindan "Yıllık" seceneklerini sirayla secer.passed
-Then kullanici secim sonucunda kitaplarin degistigini dogrular..............failed
+Then kullanici secim sonucunda kitaplarin degistigini dogrular..............passed
 ]]></system-out>
 </testcase>
 </testsuite>
