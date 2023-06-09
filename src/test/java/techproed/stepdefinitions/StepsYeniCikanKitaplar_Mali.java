@@ -163,7 +163,7 @@ public class StepsYeniCikanKitaplar_Mali {
             locate.searchBox.sendKeys(yayinevi, Keys.ENTER);
             ReusableMethods.bekle(1);
             locate.searchBox.clear();
-            ReusableMethods.bekle(2);
+            ReusableMethods.bekle(1);
 
 
         }
@@ -179,7 +179,7 @@ public class StepsYeniCikanKitaplar_Mali {
             locate.searchBox.sendKeys(yazaradi, Keys.ENTER);
             ReusableMethods.bekle(1);
             locate.searchBox.clear();
-            ReusableMethods.bekle(2);
+            ReusableMethods.bekle(1);
         }
     }
 
@@ -210,6 +210,7 @@ public class StepsYeniCikanKitaplar_Mali {
 
     @Given("Kullanici oneri form ikonunu tiklar")
     public void kullaniciOneriFormIkonunuTiklar() {
+        ReusableMethods.bekle(1);
         locate.suggestButton.click();
     }
 
@@ -244,8 +245,9 @@ public class StepsYeniCikanKitaplar_Mali {
 
     @And("Kabul edilmeyen karakter sayisi uyarisini goruntuler")
     public void kabulEdilmeyenKarakterSayisiUyarisiniGoruntuler() {
-        ReusableMethods.bekle(1);
+
         Assert.assertTrue(locate.errorMessageCommend.isDisplayed());
+        ReusableMethods.bekle(1);
     }
 
     @And("Gorus alanına ONchar gorusunu yazar")
@@ -255,6 +257,7 @@ public class StepsYeniCikanKitaplar_Mali {
 
     @Given("Kullanici dogrulama alanına yanlıs bir deger girer")
     public void kullaniciDogrulamaAlanınaYanlısBirDegerGirer() {
+        ReusableMethods.bekle(1);
         locate.feedbackCaptcha.sendKeys(Faker.instance().code().ean8());
 
     }
