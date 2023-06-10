@@ -57,7 +57,7 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
     @Then("edebiyat butonunun resmini ceker")
     public void edebiyatButonununResminiCeker() {
-        ReusableMethods.webElementScreenShoot(locate.edebiyatButonu);
+        ReusableMethods.webElementResmi(locate.edebiyatButonu);
     }
 
     @And("satista olanlar checkboxinin secili oldugunu dogrular")
