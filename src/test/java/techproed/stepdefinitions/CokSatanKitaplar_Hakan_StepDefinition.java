@@ -117,7 +117,7 @@ public class CokSatanKitaplar_Hakan_StepDefinition {
 
     @Then("Sayfanin resmini ceker")
     public void sayfaninResminiCeker() {
-        ReusableMethods.tumSayfaScreenShoot();
+        ReusableMethods.tumSayfaResmi();
     }
 
     @And("{int} saniye bekleme yapar")
