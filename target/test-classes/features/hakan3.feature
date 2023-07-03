@@ -1,11 +1,11 @@
 @hakan3
 Feature: US01 Cok satan edebiyat kitapları
-  Background: Kullanici Kitap Yurdu Sayfasina Gider
-    Given Kullanici "url" e gider
-    Then giris yap linkini tiklar
-    And eposta kutusuna mailini girer
-    And sifre kutusuna sifresini girer
-    And giris yap butonunu tiklar
+#  Background: Kullanici Kitap Yurdu Sayfasina Gider
+#    Given Kullanici "url" e gider
+#    Then giris yap linkini tiklar
+#    And eposta kutusuna mailini girer
+#    And sifre kutusuna sifresini girer
+#    And giris yap butonunu tiklar
 
   Scenario Outline: TC03 Zaman Araligi dropdown  testi
       Given Kullanici "url" e gider

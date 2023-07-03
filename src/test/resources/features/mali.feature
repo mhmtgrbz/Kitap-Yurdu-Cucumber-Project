@@ -21,7 +21,7 @@ Feature: Yeni Cikan Kitaplar Alani
       | secim                    |
       | Satış Miktarı (Az > Çok) |
       | Satış Miktarı (Çok > Az) |
-      | Ürün Adı (Z - A)         |
+      | Ürün Adı (A - Z)         |
       | Ürün Adı (Z - A)         |
       | Ucuzdan > Pahalıya       |
       | Pahalıdan > Ucuza        |
