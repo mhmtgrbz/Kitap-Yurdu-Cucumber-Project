@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 Feature: US01 Siteye login olma
 
 
@@ -103,7 +103,7 @@ Feature: US01 Siteye login olma
 
 
 
-=======
+
 Feature: US01 Sahte hesapla uye olma
   Background:    Given Kullanici "url" e gider
     Scenario: TC01 hesap acma
@@ -126,4 +126,4 @@ Feature: US01 Sahte hesapla uye olma
       And Devam kuttonuna basar
       And Kullanici merhaba kitap kurdu yazisini gorur
       Then Kullanici sayfayi kapatir
->>>>>>> master
+

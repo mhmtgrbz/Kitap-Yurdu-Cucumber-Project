@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 Feature: US01 Siteye login olma
 
 
@@ -103,7 +103,7 @@ Feature: US01 Siteye login olma
 
 
 
-=======
+
 Feature: US01 Sahte hesapla uye olma
   Background:    Given Kullanici "url" e gider
     Scenario: TC01 hesap acma
@@ -113,7 +113,7 @@ Feature: US01 Sahte hesapla uye olma
       And Kisisel verilerin korunmasi checkboxini tiklar
       And sayfada oldugunu dogrular
       And Uye olma buttonuna basar
-      Then cok satan {string} linkine tiklar
+      Then cok satan cocuk kitaplari linkine tiklar
       And uyari mesajni gorur
       And Gelen maili onaylamak icin eski pencereye gider
       And gelen maili onaylar
@@ -126,4 +126,4 @@ Feature: US01 Sahte hesapla uye olma
       And Devam kuttonuna basar
       And Kullanici merhaba kitap kurdu yazisini gorur
       Then Kullanici sayfayi kapatir
->>>>>>> master
+

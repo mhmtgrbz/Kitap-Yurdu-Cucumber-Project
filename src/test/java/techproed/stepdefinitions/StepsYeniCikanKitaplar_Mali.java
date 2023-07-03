@@ -9,17 +9,26 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.postgresql.util.PSQLException;
 import techproed.pages.LocatesMali_yeniCikanKitaplar;
+import techproed.pojo.EdebiyatKitaplariPojo;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 import techproed.utilities.ExcelUtils;
 import techproed.utilities.ReusableMethods;
 
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
+
+import static techproed.utilities.ReusableMethods.closeConnection;
 
 public class StepsYeniCikanKitaplar_Mali {
     LocatesMali_yeniCikanKitaplar locate = new LocatesMali_yeniCikanKitaplar();
     Select select;
+    Statement st;
+
+
 
     @Given("Kullanici {string} e gider")
     public void kullaniciEGider(String url) {
@@ -271,9 +280,187 @@ public class StepsYeniCikanKitaplar_Mali {
     public void kullaniciGonderButonunuTiklar() {
         locate.submitForm.click();
     }
+
+
+    //Database feature
+        @Given("kullanici database alaninda_{string}_alani kaynagi olusturur")
+        public void kullaniciDatabaseAlaninda__alaniKaynagiOlusturur(String baslik) throws ClassNotFoundException, SQLException, InterruptedException {
+
+
+      Class.forName("org.postgresql.Driver");
+
+
+    //2.adim Database'e baglanma
+    Connection con = DriverManager.getConnection(
+            "jdbc:postgresql://localhost:5432/kitapyurdu",
+            "postgres",
+            ConfigReader.getProperty("postgrePswMas"));
+    //3. statement
+    st = con.createStatement();
+
+    //4. adim edebiyatKitaplari tablosu olusturacagim
+
+    try {
+        String sql01 = "CREATE table "+baslik+" (id int primary key, isim varchar(80) , fiyat varchar(20) )";
+        st.execute(sql01);
+    } catch (Exception e) {
+
+    }
+
+    locate.tumKitaplarLink.click();
+    saniyeBekler(2);
+
+
+
+    switch (baslik){
+        case "Edebiyat":
+            locate.edebiyat.click();
+            saniyeBekler(1);
+            locate.tumlistele.click();
+            saniyeBekler(2);
+            select = new Select(locate.sayfadayuzDDM);
+            select.selectByVisibleText("100 Ürün");
+            ReusableMethods.bekle(1);
+
+            for (int i = 0; i < locate.basliklar.size(); i++) {
+               System.out.println("locate.basliklar.get(i).getText() = " + locate.basliklar.get(i).getText());
+               String veri="insert into edebiyat values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.price.get(i).getText()+"')";
+               st.executeUpdate(veri);
+
+            }
+
+        case "Tarih":
+            locate.tarih.click();
+            saniyeBekler(1);
+            locate.tumlistele.click();
+            saniyeBekler(2);
+            select = new Select(locate.sayfadayuzDDM);
+            select.selectByVisibleText("100 Ürün");
+            ReusableMethods.bekle(1);
+
+            for (int i = 0; i < locate.basliklar.size(); i++) {
+                System.out.println("locate.basliklar.get(i).getText() = " + locate.basliklar.get(i).getText());
+                String veri="insert into tarih values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.price.get(i).getText()+"')";                st.executeUpdate(veri);
+            }
+        case "Cocuk_kitaplari":
+            locate.cocuk.click();
+            saniyeBekler(1);
+            locate.tumlistele.click();
+            saniyeBekler(2);
+            select = new Select(locate.sayfadayuzDDM);
+            select.selectByVisibleText("100 Ürün");
+            ReusableMethods.bekle(1);
+
+            for (int i = 0; i < locate.basliklar.size(); i++) {
+                System.out.println("locate.basliklar.get(i).getText() = " + locate.basliklar.get(i).getText());
+                String veri="insert into cocuk_kitaplari values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.price.get(i).getText()+"')";
+                st.executeUpdate(veri);
+            }
+        case "Bilgisayar":
+            locate.bilgisayar.click();
+            saniyeBekler(1);
+            locate.tumlistele.click();
+            saniyeBekler(2);
+            select = new Select(locate.sayfadayuzDDM);
+            select.selectByVisibleText("100 Ürün");
+            ReusableMethods.bekle(1);
+
+            for (int i = 0; i < locate.basliklar.size(); i++) {
+                System.out.println("locate.basliklar.get(i).getText() = " + locate.basliklar.get(i).getText());
+                String veri="insert into bilgisayar values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.price.get(i).getText()+"')";
+                st.executeUpdate(veri);
+            }
+        case "Sinavlar":
+            locate.sinavlar.click();
+            saniyeBekler(1);
+            locate.tumlistele.click();
+            saniyeBekler(2);
+            select = new Select(locate.sayfadayuzDDM);
+            select.selectByVisibleText("100 Ürün");
+            ReusableMethods.bekle(1);
+
+            for (int i = 0; i < locate.basliklar.size(); i++) {
+                System.out.println("locate.basliklar.get(i).getText() = " + locate.basliklar.get(i).getText());
+                String veri="insert into sinavlar values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.price.get(i).getText()+"')";
+                st.executeUpdate(veri);
+            }
+
+    }
+
+            closeConnection();
 }
 
+    @Given("UI alanında tum kitaplar basligini tiklar")
+    public void uı_alanında_tum_kitaplar_basligini_tiklar() {
+        locate.tumKitaplarLink.click();
+        ReusableMethods.bekle(1);
 
+    }
+    @Then("acilan sayfada_{string}_alani kitaplarini listeler")
+    public void acilanSayfada__alaniKitaplariniListeler(String baslik) throws InterruptedException {
+        switch (baslik) {
+            case "Edebiyat":
+                locate.edebiyat.click();
+                saniyeBekler(1);
+                locate.tumlistele.click();
+                saniyeBekler(2);
+                select = new Select(locate.sayfadayuzDDM);
+                select.selectByVisibleText("100 Ürün");
+                ReusableMethods.bekle(1);
+
+
+            case "Tarih":
+                locate.tarih.click();
+                saniyeBekler(1);
+                locate.tumlistele.click();
+                saniyeBekler(2);
+                select = new Select(locate.sayfadayuzDDM);
+                select.selectByVisibleText("100 Ürün");
+                ReusableMethods.bekle(1);
+
+
+            case "Cocuk_kitaplari":
+                locate.cocuk.click();
+                saniyeBekler(1);
+                locate.tumlistele.click();
+                saniyeBekler(2);
+                select = new Select(locate.sayfadayuzDDM);
+                select.selectByVisibleText("100 Ürün");
+                ReusableMethods.bekle(1);
+
+
+            case "Bilgisayar":
+                locate.bilgisayar.click();
+                saniyeBekler(1);
+                locate.tumlistele.click();
+                saniyeBekler(2);
+                select = new Select(locate.sayfadayuzDDM);
+                select.selectByVisibleText("100 Ürün");
+                ReusableMethods.bekle(1);
+
+
+            case "Sinavlar":
+                locate.sinavlar.click();
+                saniyeBekler(1);
+                locate.tumlistele.click();
+                saniyeBekler(2);
+                select = new Select(locate.sayfadayuzDDM);
+                select.selectByVisibleText("100 Ürün");
+                ReusableMethods.bekle(1);
+
+
+        }
+
+
+
+    }
+
+    @And("listelenen sayfada ilk ve son kitaplari databasede kontrol eder")
+    public void listelenenSayfadaIlkVeSonKitaplariDatabasedeKontrolEder() {
+
+
+    }
+}
 
 
 
