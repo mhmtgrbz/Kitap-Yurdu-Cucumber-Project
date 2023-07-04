@@ -21,6 +21,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static techproed.utilities.ReusableMethods.closeConnection;
 
 public class StepsYeniCikanKitaplar_Mali {
@@ -476,18 +477,37 @@ public class StepsYeniCikanKitaplar_Mali {
 
     }
 
-    @And("listelenen sayfada ilk ve son kitaplari databasede kontrol eder")
-    public void listelenenSayfadaIlkVeSonKitaplariDatabasedeKontrolEder() {
 
+
+    @And("listelenen sayfada ilk ve son kitaplari {string} databasede kontrol eder")
+    public void listelenenSayfadaIlkVeSonKitaplariDatabasedeKontrolEder(String baslik) throws SQLException {
+        ReusableMethods.bekle(2);
         System.out.println("locate.author.get(0).getText() = " + locate.author.get(0).getText());
+        String actualData=locate.author.get(0).getText();
 
         System.out.println("locate.author.get(99).getText() = " + locate.author.get(99).getText());
+        String actualData2=locate.author.get(99).getText();
+
+        //Database sorgu query
+        String sqlQuery1 = "SELECT * FROM "+baslik+" where yazar= '"+actualData+"'  ";
+        String sqlQuery2 = "SELECT * FROM "+baslik+" where yazar= '"+actualData2+"'  ";
+        System.out.println("sqlQuery1 = " + sqlQuery1);
+        System.out.println("sqlQuery2 = " + sqlQuery2);
+
+        ResultSet resultSet1 = st.executeQuery(sqlQuery1);//Query ile çağrılan data resultSet içerisinde yer alacak.
+        resultSet1.next();
+        System.out.println("resultSet1.getString(\"yazar\") = " + resultSet1.getString("yazar"));
+        Assert.assertEquals(actualData,resultSet1.getString("yazar"));
+
+        ResultSet resultSet2 = st.executeQuery(sqlQuery2);
+        resultSet2.next();
+
+        Assert.assertEquals(actualData2,resultSet2.getString("yazar"));
+
 
 
 
     }
-
-
 }
 
 
