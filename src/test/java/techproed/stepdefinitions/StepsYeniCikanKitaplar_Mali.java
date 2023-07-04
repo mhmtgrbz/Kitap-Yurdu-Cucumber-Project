@@ -283,29 +283,32 @@ public class StepsYeniCikanKitaplar_Mali {
 
 
     //Database feature
+
+    @Given("database kaynagi baglantı saglanir")
+    public void databaseKaynagiBaglantıSaglanir() throws SQLException, ClassNotFoundException {
+        Class.forName("org.postgresql.Driver");
+
+
+        //2.adim Database'e baglanma
+        Connection con = DriverManager.getConnection(
+                "jdbc:postgresql://localhost:5432/kitapyurdu",
+                "postgres",
+                ConfigReader.getProperty("postgrePswMas"));
+        //3. statement
+        st = con.createStatement();
+
+    }
         @Given("kullanici database alaninda_{string}_alani kaynagi olusturur")
         public void kullaniciDatabaseAlaninda__alaniKaynagiOlusturur(String baslik) throws ClassNotFoundException, SQLException, InterruptedException {
 
+        //4. adim edebiyatKitaplari tablosu olusturacagim
 
-      Class.forName("org.postgresql.Driver");
+            try {
+                String sql01 = "CREATE table "+baslik+" (id int primary key, isim varchar(80) ,yazar varchar(40), fiyat varchar(20) )";
+                st.execute(sql01);
+            } catch (Exception e) {
 
-
-    //2.adim Database'e baglanma
-    Connection con = DriverManager.getConnection(
-            "jdbc:postgresql://localhost:5432/kitapyurdu",
-            "postgres",
-            ConfigReader.getProperty("postgrePswMas"));
-    //3. statement
-    st = con.createStatement();
-
-    //4. adim edebiyatKitaplari tablosu olusturacagim
-
-    try {
-        String sql01 = "CREATE table "+baslik+" (id int primary key, isim varchar(80) , fiyat varchar(20) )";
-        st.execute(sql01);
-    } catch (Exception e) {
-
-    }
+            }
 
     locate.tumKitaplarLink.click();
     saniyeBekler(2);
@@ -314,6 +317,7 @@ public class StepsYeniCikanKitaplar_Mali {
 
     switch (baslik){
         case "Edebiyat":
+
             locate.edebiyat.click();
             saniyeBekler(1);
             locate.tumlistele.click();
@@ -323,13 +327,16 @@ public class StepsYeniCikanKitaplar_Mali {
             ReusableMethods.bekle(1);
 
             for (int i = 0; i < locate.basliklar.size(); i++) {
-               System.out.println("locate.basliklar.get(i).getText() = " + locate.basliklar.get(i).getText());
-               String veri="insert into edebiyat values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.price.get(i).getText()+"')";
+               System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
+               String veri="insert into edebiyat values ("+i+",'"+locate.basliklar.
+                       get(i).getText().replaceAll("'","")+"','"+locate.author.get(i).getText()+"', '"+locate.price.get(i).getText()+"')";
                st.executeUpdate(veri);
 
             }
+            break;
 
         case "Tarih":
+
             locate.tarih.click();
             saniyeBekler(1);
             locate.tumlistele.click();
@@ -339,10 +346,13 @@ public class StepsYeniCikanKitaplar_Mali {
             ReusableMethods.bekle(1);
 
             for (int i = 0; i < locate.basliklar.size(); i++) {
-                System.out.println("locate.basliklar.get(i).getText() = " + locate.basliklar.get(i).getText());
-                String veri="insert into tarih values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.price.get(i).getText()+"')";                st.executeUpdate(veri);
+                System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
+                String veri="insert into tarih values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.author.get(i).getText()+"','"+locate.price.get(i).getText()+"')";
+                st.executeUpdate(veri);
             }
+            break;
         case "Cocuk_kitaplari":
+
             locate.cocuk.click();
             saniyeBekler(1);
             locate.tumlistele.click();
@@ -352,11 +362,13 @@ public class StepsYeniCikanKitaplar_Mali {
             ReusableMethods.bekle(1);
 
             for (int i = 0; i < locate.basliklar.size(); i++) {
-                System.out.println("locate.basliklar.get(i).getText() = " + locate.basliklar.get(i).getText());
-                String veri="insert into cocuk_kitaplari values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.price.get(i).getText()+"')";
+                System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
+                String veri="insert into cocuk_kitaplari values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.author.get(i).getText()+"','"+locate.price.get(i).getText()+"')";
                 st.executeUpdate(veri);
             }
+            break;
         case "Bilgisayar":
+
             locate.bilgisayar.click();
             saniyeBekler(1);
             locate.tumlistele.click();
@@ -366,11 +378,13 @@ public class StepsYeniCikanKitaplar_Mali {
             ReusableMethods.bekle(1);
 
             for (int i = 0; i < locate.basliklar.size(); i++) {
-                System.out.println("locate.basliklar.get(i).getText() = " + locate.basliklar.get(i).getText());
-                String veri="insert into bilgisayar values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.price.get(i).getText()+"')";
+                System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
+                String veri="insert into bilgisayar values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.author.get(i).getText()+"','"+locate.price.get(i).getText()+"')";
                 st.executeUpdate(veri);
             }
+            break;
         case "Sinavlar":
+
             locate.sinavlar.click();
             saniyeBekler(1);
             locate.tumlistele.click();
@@ -380,14 +394,16 @@ public class StepsYeniCikanKitaplar_Mali {
             ReusableMethods.bekle(1);
 
             for (int i = 0; i < locate.basliklar.size(); i++) {
-                System.out.println("locate.basliklar.get(i).getText() = " + locate.basliklar.get(i).getText());
-                String veri="insert into sinavlar values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.price.get(i).getText()+"')";
+                System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
+                String veri="insert into sinavlar values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.author.get(i).getText()+"','"+locate.price.get(i).getText()+"')";
                 st.executeUpdate(veri);
             }
+            break;
 
     }
 
-            closeConnection();
+            closeConnection(); //con.close ve st.close işlemi birlikte yapıyor
+
 }
 
     @Given("UI alanında tum kitaplar basligini tiklar")
@@ -407,6 +423,7 @@ public class StepsYeniCikanKitaplar_Mali {
                 select = new Select(locate.sayfadayuzDDM);
                 select.selectByVisibleText("100 Ürün");
                 ReusableMethods.bekle(1);
+                break;
 
 
             case "Tarih":
@@ -417,6 +434,7 @@ public class StepsYeniCikanKitaplar_Mali {
                 select = new Select(locate.sayfadayuzDDM);
                 select.selectByVisibleText("100 Ürün");
                 ReusableMethods.bekle(1);
+                break;
 
 
             case "Cocuk_kitaplari":
@@ -427,6 +445,7 @@ public class StepsYeniCikanKitaplar_Mali {
                 select = new Select(locate.sayfadayuzDDM);
                 select.selectByVisibleText("100 Ürün");
                 ReusableMethods.bekle(1);
+                break;
 
 
             case "Bilgisayar":
@@ -437,6 +456,7 @@ public class StepsYeniCikanKitaplar_Mali {
                 select = new Select(locate.sayfadayuzDDM);
                 select.selectByVisibleText("100 Ürün");
                 ReusableMethods.bekle(1);
+                break;
 
 
             case "Sinavlar":
@@ -447,6 +467,7 @@ public class StepsYeniCikanKitaplar_Mali {
                 select = new Select(locate.sayfadayuzDDM);
                 select.selectByVisibleText("100 Ürün");
                 ReusableMethods.bekle(1);
+                break;
 
 
         }
@@ -458,8 +479,15 @@ public class StepsYeniCikanKitaplar_Mali {
     @And("listelenen sayfada ilk ve son kitaplari databasede kontrol eder")
     public void listelenenSayfadaIlkVeSonKitaplariDatabasedeKontrolEder() {
 
+        System.out.println("locate.author.get(0).getText() = " + locate.author.get(0).getText());
+
+        System.out.println("locate.author.get(99).getText() = " + locate.author.get(99).getText());
+
+
 
     }
+
+
 }
 
 

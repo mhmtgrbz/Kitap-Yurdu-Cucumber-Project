@@ -52,6 +52,11 @@ public class LocatesMali_yeniCikanKitaplar {
     @FindBy(xpath = "//div[@class='price']")
     public List<WebElement> price;
 
+    @FindBy(xpath = "//div[@class='author compact ellipsis']")
+    public List<WebElement> author;
+
+
+
     @FindBy(xpath = "(//span[@class='custom-checkmark'])[1]")
     public WebElement satistaOlanCheckBox;
     @FindBy(xpath = "(//span[@class='custom-checkmark'])[2]")

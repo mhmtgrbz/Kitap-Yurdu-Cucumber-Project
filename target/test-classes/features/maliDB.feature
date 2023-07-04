@@ -2,6 +2,8 @@
 Feature: Creating database
   Background:  Kullanici Kitap Yurdu Sayfasina Gider
     Given Kullanici "url" e gider
+    And  database kaynagi baglantı saglanir
+
   Scenario Outline:
     Given kullanici database alaninda_"<baslik>"_alani kaynagi olusturur
     And UI alanında tum kitaplar basligini tiklar
