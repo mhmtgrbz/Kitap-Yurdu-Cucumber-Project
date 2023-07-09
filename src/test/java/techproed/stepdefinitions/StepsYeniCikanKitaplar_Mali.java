@@ -501,7 +501,7 @@ public class StepsYeniCikanKitaplar_Mali {
 
         ResultSet resultSet2 = st.executeQuery(sqlQuery2);
         resultSet2.next();
-
+        System.out.println("resultSet2.getString(\"yazar\") = " + resultSet2.getString("yazar"));
         Assert.assertEquals(actualData2,resultSet2.getString("yazar"));
 
 
