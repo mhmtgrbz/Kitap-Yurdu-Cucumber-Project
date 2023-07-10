@@ -400,6 +400,38 @@ public class StepsYeniCikanKitaplar_Mali {
                 st.executeUpdate(veri);
             }
             break;
+        case "Psikoloji":
+
+            locate.psikoloji.click();
+            saniyeBekler(1);
+            locate.tumlistele.click();
+            saniyeBekler(2);
+            select = new Select(locate.sayfadayuzDDM);
+            select.selectByVisibleText("100 Ürün");
+            ReusableMethods.bekle(1);
+
+            for (int i = 0; i < locate.basliklar.size(); i++) {
+                System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
+                String veri="insert into psikoloji values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.author.get(i).getText()+"','"+locate.price.get(i).getText()+"')";
+                st.executeUpdate(veri);
+            }
+            break;
+        case "Kultur":
+
+            locate.kultur.click();
+            saniyeBekler(1);
+            locate.tumlistele.click();
+            saniyeBekler(2);
+            select = new Select(locate.sayfadayuzDDM);
+            select.selectByVisibleText("100 Ürün");
+            ReusableMethods.bekle(1);
+
+            for (int i = 0; i < locate.basliklar.size(); i++) {
+                System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
+                String veri="insert into kultur values ("+i+",'"+locate.basliklar.get(i).getText().replaceAll("'","")+"','"+locate.author.get(i).getText()+"','"+locate.price.get(i).getText()+"')";
+                st.executeUpdate(veri);
+            }
+            break;
 
     }
 
@@ -462,6 +494,24 @@ public class StepsYeniCikanKitaplar_Mali {
 
             case "Sinavlar":
                 locate.sinavlar.click();
+                saniyeBekler(1);
+                locate.tumlistele.click();
+                saniyeBekler(2);
+                select = new Select(locate.sayfadayuzDDM);
+                select.selectByVisibleText("100 Ürün");
+                ReusableMethods.bekle(1);
+                break;
+            case "Psikoloji":
+                locate.psikoloji.click();
+                saniyeBekler(1);
+                locate.tumlistele.click();
+                saniyeBekler(2);
+                select = new Select(locate.sayfadayuzDDM);
+                select.selectByVisibleText("100 Ürün");
+                ReusableMethods.bekle(1);
+                break;
+            case "Kultur":
+                locate.kultur.click();
                 saniyeBekler(1);
                 locate.tumlistele.click();
                 saniyeBekler(2);

@@ -26,6 +26,10 @@ public class LocatesMali_yeniCikanKitaplar {
     public WebElement tarih;
     @FindBy(xpath = "//a[@href='kategori/kitap-sinavlar/737.html']")
     public WebElement sinavlar;
+    @FindBy(xpath = "//a[@href='kategori/kitap-psikoloji/87.html']")
+    public WebElement psikoloji;
+    @FindBy(xpath = "//a[@href='kategori/kitap-kultur/77.html']")
+    public WebElement kultur;
     @FindBy(xpath = "//a[@href='kategori/kitap-bilgisayar/31.html']")
     public WebElement bilgisayar;
     @FindBy(xpath = "//a[text()='Kategorinin Tüm Ürünlerini Listele']")

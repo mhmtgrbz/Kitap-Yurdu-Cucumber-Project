@@ -16,3 +16,5 @@ Feature: Creating database
       | Sinavlar        |
       | Bilgisayar      |
       | Tarih           |
+      | Psikoloji       |
+      | Kultur          |
