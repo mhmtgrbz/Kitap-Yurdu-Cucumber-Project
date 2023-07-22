@@ -51,7 +51,7 @@ Feature: Yeni Cikan Kitaplar Alani
   @suggestForm
   Scenario: TC08 Sayfa kaydırma butonları
     Given Kullanici sayfa sonuna kaydirma butonuna tiklar
-    And 1 saniye bekler
+    And 2 saniye bekler
     And sayfa resmini alir
 
    @suggestForm
