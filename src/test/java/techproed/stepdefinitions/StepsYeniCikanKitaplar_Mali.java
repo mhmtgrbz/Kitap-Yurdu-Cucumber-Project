@@ -7,8 +7,10 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.postgresql.util.PSQLException;
 import techproed.pages.LocatesMali_yeniCikanKitaplar;
 import techproed.pojo.EdebiyatKitaplariPojo;
@@ -18,23 +20,26 @@ import techproed.utilities.ExcelUtils;
 import techproed.utilities.ReusableMethods;
 
 import java.sql.*;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+
 import static techproed.utilities.ReusableMethods.closeConnection;
 
 public class StepsYeniCikanKitaplar_Mali {
     LocatesMali_yeniCikanKitaplar locate = new LocatesMali_yeniCikanKitaplar();
     Select select;
     Statement st;
+    Connection con;
 
 
 
     @Given("Kullanici {string} e gider")
     public void kullaniciEGider(String url) {
         Driver.getDriver().get(ConfigReader.getProperty("url"));
-        ReusableMethods.bekle(2);
+        ReusableMethods.bekle(1);
     }
 
     @Then("yeni cikan kitaplar linkini tiklar")
@@ -287,15 +292,16 @@ public class StepsYeniCikanKitaplar_Mali {
 
     @Given("database kaynagi baglantı saglanir")
     public void databaseKaynagiBaglantıSaglanir() throws SQLException, ClassNotFoundException {
-        Class.forName("org.postgresql.Driver");
+
+        //Class.forName("org.postgresql.Driver"); //BU artık kalktı
 
 
-        //2.adim Database'e baglanma
-        Connection con = DriverManager.getConnection(
+        //1.adim Database'e baglanma
+        con = DriverManager.getConnection(
                 "jdbc:postgresql://localhost:5432/kitapyurdu",
                 "postgres",
                 ConfigReader.getProperty("postgrePswMas"));
-        //3. statement
+        //2. statement
         st = con.createStatement();
 
     }
@@ -310,9 +316,14 @@ public class StepsYeniCikanKitaplar_Mali {
             } catch (Exception e) {
 
             }
+            try {
+                locate.cookies.click();
+            }catch (NoSuchElementException e){
+                System.out.println("Cookies pop up çıkmadı.");
+            }
+            locate.tumKatagorilerLink.click();
+            saniyeBekler(2);
 
-    locate.tumKitaplarLink.click();
-    saniyeBekler(2);
 
 
 
@@ -439,9 +450,10 @@ public class StepsYeniCikanKitaplar_Mali {
 
 }
 
-    @Given("UI alanında tum kitaplar basligini tiklar")
-    public void uı_alanında_tum_kitaplar_basligini_tiklar() {
-        locate.tumKitaplarLink.click();
+    @Given("UI alanında tum katagoriler basligini tiklar")
+    public void uı_alanında_tum_katagoriler_basligini_tiklar() {
+        //locate.cookies.click();
+        locate.tumKatagorilerLink.click();
         ReusableMethods.bekle(1);
 
     }
@@ -523,8 +535,6 @@ public class StepsYeniCikanKitaplar_Mali {
 
         }
 
-
-
     }
 
 
@@ -553,8 +563,6 @@ public class StepsYeniCikanKitaplar_Mali {
         resultSet2.next();
         System.out.println("resultSet2.getString(\"yazar\") = " + resultSet2.getString("yazar"));
         Assert.assertEquals(actualData2,resultSet2.getString("yazar"));
-
-
 
 
     }

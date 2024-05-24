@@ -9,6 +9,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 
 import java.time.Duration;
+import java.util.List;
 
 /*
     Driver class'indaki mantik extends yontemi ile degil yani TestBase class'ina extend etmek yerine
@@ -40,8 +41,12 @@ public class Driver {
         if (driver == null) {
             switch (ConfigReader.getProperty("browser")) {
                 case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver(new ChromeOptions().addArguments("--remote-allow-origins=*"));
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--disable-popup-blocking");
+                    options.addArguments("--disable-notifications");
+                    //options.setExperimentalOption("excludeSwitches", List.of("disable-popup-blocking"));
+                    driver = new ChromeDriver(options);
+
                     break;
                 case "edge":
                     WebDriverManager.edgedriver().setup();

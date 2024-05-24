@@ -15,22 +15,27 @@ public class LocatesMali_yeniCikanKitaplar {
     @FindBy(xpath = "//span[text()='Yeni Çıkan Kitaplar']")
     public WebElement yeniCikanKitaplarLink;
 
-    @FindBy(xpath = "//span[text()='Tüm Kitaplar']")
-    public WebElement tumKitaplarLink;
+    @FindBy(xpath = "//div[text()='Kabul Et ve Kapat']")
+    public WebElement cookies;
 
-    @FindBy(xpath = "//a[@href='kategori/kitap-edebiyat/128.html']")
+
+
+    @FindBy(xpath = "//a[text()='Tüm Kategoriler']")
+    public WebElement tumKatagorilerLink;
+
+    @FindBy(xpath = "//h2[text()='Edebiyat']")
     public WebElement edebiyat;
-    @FindBy(xpath = "//a[@href='kategori/kitap-cocuk-kitaplari/2.html']")
+    @FindBy(xpath = "//h2[text()='Çocuk Kitapları']")
     public WebElement cocuk;
-    @FindBy(xpath = "//a[@href='kategori/kitap-tarih/41.html']")
+    @FindBy(xpath = "//h2[text()='Tarih']")
     public WebElement tarih;
-    @FindBy(xpath = "//a[@href='kategori/kitap-sinavlar/737.html']")
+    @FindBy(xpath = "//h2[text()='Sınav']")
     public WebElement sinavlar;
-    @FindBy(xpath = "//a[@href='kategori/kitap-psikoloji/87.html']")
+    @FindBy(xpath = "//h2[text()='Psikoloji']")
     public WebElement psikoloji;
-    @FindBy(xpath = "//a[@href='kategori/kitap-kultur/77.html']")
+    @FindBy(xpath = "//h2[text()='Kültür']")
     public WebElement kultur;
-    @FindBy(xpath = "//a[@href='kategori/kitap-bilgisayar/31.html']")
+    @FindBy(xpath = "//h2[text()='Bilgisayar']")
     public WebElement bilgisayar;
     @FindBy(xpath = "//a[text()='Kategorinin Tüm Ürünlerini Listele']")
     public WebElement tumlistele;
