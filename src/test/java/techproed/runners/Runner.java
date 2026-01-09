@@ -24,7 +24,7 @@ senaryoyu çalıştırabiliriz
         //rerun->fail olan senaryoları belirtilen yoldaki txt dosya içinde gösterir
         //plugin parametresi ile pretty ifadesi kullanılırsa konsolda scenario.lar ile ilgili bilgi gösterir
         features = "src/test/resources/features",
-        glue = {"techproed/stepDefinitions", "techproed/hooks"},
+        glue = {"techproed/stepdefinitions", "techproed/hooks"},
         //Bu parametre ile kodlarımızı yazdığımız stepDefinition
         //class'ının packege'ını belirtiriz
 
