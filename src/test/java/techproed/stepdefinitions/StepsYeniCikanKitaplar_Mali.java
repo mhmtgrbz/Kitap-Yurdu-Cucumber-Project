@@ -26,6 +26,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+import static techproed.utilities.ReusableMethods.bekle;
 import static techproed.utilities.ReusableMethods.closeConnection;
 
 public class StepsYeniCikanKitaplar_Mali {
@@ -39,26 +40,26 @@ public class StepsYeniCikanKitaplar_Mali {
     @Given("Kullanici {string} e gider")
     public void kullaniciEGider(String url) {
         Driver.getDriver().get(ConfigReader.getProperty("url"));
-        ReusableMethods.bekle(1);
+        bekle(1);
     }
 
     @Then("yeni cikan kitaplar linkini tiklar")
     public void yeniCikanKitaplarLinkiniTiklar() {
         locate.yeniCikanKitaplarLink.click();
-        ReusableMethods.bekle(1);
+        bekle(1);
     }
 
     @Then("haftalik yeni cikan kitaplar linkini tiklar")
     public void haftalikYeniCikanKitaplarLinkiniTiklar() {
         locate.haftalikYeniKitaplar.click();
-        ReusableMethods.bekle(1);
+        bekle(1);
     }
 
     @Given("Kullanici zaman olarak sonikiay secer")
     public void kullanici_zaman_olarak_sonikiay_secer() {
         select = new Select(locate.haftalikDDM);
         select.selectByIndex(1);
-        ReusableMethods.bekle(1);
+        bekle(1);
 
 
     }
@@ -67,27 +68,27 @@ public class StepsYeniCikanKitaplar_Mali {
     public void kullanici_varsayilan_olarak_pahalidanucuza_secer() {
         select = new Select(locate.varsayilanDDM);
         select.selectByVisibleText("Pahalıdan > Ucuza");
-        ReusableMethods.bekle(1);
+        bekle(1);
     }
 
     @Given("Kullanici satistaolanlar alanini isaretler")
     public void kullanici_satistaolanlar_alanini_isaretler() {
         locate.satistaOlanCheckBox.click();
-        ReusableMethods.bekle(1);
+        bekle(1);
 
     }
 
     @Given("Kullanici stoktaolanlar alanini isaretler")
     public void kullanici_stoktaolanlar_alanini_isaretler() {
         locate.stoktaOlanCheckBox.click();
-        ReusableMethods.bekle(1);
+        bekle(1);
     }
 
     @Given("Kullanici urun sayfa gorunumunu elli olarak isaretler")
     public void kullanici_urun_sayfa_gorunumunu_elli_olarak_isaretler() {
         select = new Select(locate.sayfadaelliDDM);
         select.selectByVisibleText("50 Ürün");
-        ReusableMethods.bekle(1);
+        bekle(1);
     }
 
     @Then("kullanici varsayilan olarak {string} aratir")
@@ -106,7 +107,7 @@ public class StepsYeniCikanKitaplar_Mali {
     @Then("basligin {string} icerdigini dogrular")
     public void basliginIcerdiginiDogrular(String arg0) {
         Assert.assertTrue(locate.varsayilanDDM.getText().contains(arg0));
-        ReusableMethods.bekle(3);
+        bekle(3);
     }
 
     @And("sayfada elli adet urun oldugunu dogrular")
@@ -121,14 +122,14 @@ public class StepsYeniCikanKitaplar_Mali {
     public void kullaniciIngilizceKitaplarSeceneginiIsaretler() {
         ReusableMethods.scroll(locate.oylama);
         locate.ingCheckbox.click();
-        ReusableMethods.bekle(2);
+        bekle(2);
 
     }
 
     @And("kulanici turkce kitaplar secenegini isaretler")
     public void kulaniciTurkceKitaplarSeceneginiIsaretler() {
         locate.turkceCheckbox.click();
-        ReusableMethods.bekle(1);
+        bekle(1);
 
     }
 
@@ -142,9 +143,9 @@ public class StepsYeniCikanKitaplar_Mali {
     @Given("Kullanici urun fiyat aralıgını dusuk {int} yuksek {int} TL olarak secer")
     public void kullaniciUrunFiyatAralıgınıDusukYuksekTLOlarakSecer(int min, int max) {
         locate.minprice.sendKeys(String.valueOf(min));
-        ReusableMethods.bekle(1);
+        bekle(1);
         locate.maxprice.sendKeys(String.valueOf(max));
-        ReusableMethods.bekle(1);
+        bekle(1);
 
     }
 
@@ -161,9 +162,9 @@ public class StepsYeniCikanKitaplar_Mali {
         for (int i = 1; i <= excelUtils.rowCount(); i++) {
             String kitapadi = excelUtils.getCellData(i, 0);
             locate.searchBox.sendKeys(kitapadi, Keys.ENTER);
-            ReusableMethods.bekle(1);
+            bekle(1);
             locate.searchBox.clear();
-            ReusableMethods.bekle(2);
+            bekle(2);
 
         }
     }
@@ -176,9 +177,9 @@ public class StepsYeniCikanKitaplar_Mali {
             String yayinevi = excelUtils.getCellData(i, 2);
 
             locate.searchBox.sendKeys(yayinevi, Keys.ENTER);
-            ReusableMethods.bekle(1);
+            bekle(1);
             locate.searchBox.clear();
-            ReusableMethods.bekle(1);
+            bekle(1);
 
 
         }
@@ -192,9 +193,9 @@ public class StepsYeniCikanKitaplar_Mali {
         for (int i = 1; i <= excelUtils.rowCount(); i++) {
             String yazaradi = excelUtils.getCellData(i, 1);
             locate.searchBox.sendKeys(yazaradi, Keys.ENTER);
-            ReusableMethods.bekle(1);
+            bekle(1);
             locate.searchBox.clear();
-            ReusableMethods.bekle(1);
+            bekle(1);
         }
     }
 
@@ -225,21 +226,21 @@ public class StepsYeniCikanKitaplar_Mali {
 
     @Given("Kullanici oneri form ikonunu tiklar")
     public void kullaniciOneriFormIkonunuTiklar() {
-        ReusableMethods.bekle(1);
+        bekle(1);
         locate.suggestButton.click();
     }
 
     @And("Acilan pencerede isim alanını doldurur")
     public void acilanPenceredeIsimAlanınıDoldurur() {
         locate.suggestFormName.sendKeys(Faker.instance().name().fullName());
-        ReusableMethods.bekle(1);
+        bekle(1);
 
     }
 
     @And("e posta alanını doldurur")
     public void ePostaAlanınıDoldurur() {
         locate.suggestFormEmail.sendKeys(Faker.instance().internet().emailAddress());
-        ReusableMethods.bekle(1);
+        bekle(1);
     }
 
     @And("Konu alanına Oneri seklinde giris yapar")
@@ -247,14 +248,14 @@ public class StepsYeniCikanKitaplar_Mali {
         select=new Select(locate.subjectDDM);
         select.selectByValue("1");
 
-        ReusableMethods.bekle(1);
+        bekle(1);
     }
 
 
     @And("Gorus alanina dokuzchar gorusunu yazar")
     public void gorusAlaninaDokuzcharGorusunuYazar() {
         locate.gorus.sendKeys("Abcdefgh9");
-        ReusableMethods.bekle(1);
+        bekle(1);
 
     }
 
@@ -262,7 +263,7 @@ public class StepsYeniCikanKitaplar_Mali {
     public void kabulEdilmeyenKarakterSayisiUyarisiniGoruntuler() {
 
         Assert.assertTrue(locate.errorMessageCommend.isDisplayed());
-        ReusableMethods.bekle(1);
+        bekle(1);
     }
 
     @And("Gorus alanına ONchar gorusunu yazar")
@@ -272,7 +273,7 @@ public class StepsYeniCikanKitaplar_Mali {
 
     @Given("Kullanici dogrulama alanına yanlıs bir deger girer")
     public void kullaniciDogrulamaAlanınaYanlısBirDegerGirer() {
-        ReusableMethods.bekle(1);
+        bekle(1);
         locate.feedbackCaptcha.sendKeys(Faker.instance().code().ean8());
 
     }
@@ -308,6 +309,7 @@ public class StepsYeniCikanKitaplar_Mali {
         @Given("kullanici database alaninda_{string}_alani kaynagi olusturur")
         public void kullaniciDatabaseAlaninda__alaniKaynagiOlusturur(String baslik) throws ClassNotFoundException, SQLException, InterruptedException {
 
+            Driver.getDriver().navigate().refresh();
         //4. adim edebiyatKitaplari tablosu olusturacagim
 
             try {
@@ -322,7 +324,8 @@ public class StepsYeniCikanKitaplar_Mali {
                 System.out.println("Cookies pop up çıkmadı.");
             }
             locate.tumKatagorilerLink.click();
-            saniyeBekler(2);
+
+
 
 
 
@@ -336,7 +339,7 @@ public class StepsYeniCikanKitaplar_Mali {
             saniyeBekler(2);
             select = new Select(locate.sayfadayuzDDM);
             select.selectByVisibleText("100 Ürün");
-            ReusableMethods.bekle(1);
+            bekle(1);
 
             for (int i = 0; i < locate.basliklar.size(); i++) {
                System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
@@ -355,7 +358,7 @@ public class StepsYeniCikanKitaplar_Mali {
             saniyeBekler(2);
             select = new Select(locate.sayfadayuzDDM);
             select.selectByVisibleText("100 Ürün");
-            ReusableMethods.bekle(1);
+            bekle(1);
 
             for (int i = 0; i < locate.basliklar.size(); i++) {
                 System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
@@ -371,7 +374,7 @@ public class StepsYeniCikanKitaplar_Mali {
             saniyeBekler(2);
             select = new Select(locate.sayfadayuzDDM);
             select.selectByVisibleText("100 Ürün");
-            ReusableMethods.bekle(1);
+            bekle(1);
 
             for (int i = 0; i < locate.basliklar.size(); i++) {
                 System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
@@ -387,7 +390,7 @@ public class StepsYeniCikanKitaplar_Mali {
             saniyeBekler(2);
             select = new Select(locate.sayfadayuzDDM);
             select.selectByVisibleText("100 Ürün");
-            ReusableMethods.bekle(1);
+            bekle(1);
 
             for (int i = 0; i < locate.basliklar.size(); i++) {
                 System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
@@ -403,7 +406,7 @@ public class StepsYeniCikanKitaplar_Mali {
             saniyeBekler(2);
             select = new Select(locate.sayfadayuzDDM);
             select.selectByVisibleText("100 Ürün");
-            ReusableMethods.bekle(1);
+            bekle(1);
 
             for (int i = 0; i < locate.basliklar.size(); i++) {
                 System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
@@ -419,7 +422,7 @@ public class StepsYeniCikanKitaplar_Mali {
             saniyeBekler(2);
             select = new Select(locate.sayfadayuzDDM);
             select.selectByVisibleText("100 Ürün");
-            ReusableMethods.bekle(1);
+            bekle(1);
 
             for (int i = 0; i < locate.basliklar.size(); i++) {
                 System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
@@ -435,7 +438,7 @@ public class StepsYeniCikanKitaplar_Mali {
             saniyeBekler(2);
             select = new Select(locate.sayfadayuzDDM);
             select.selectByVisibleText("100 Ürün");
-            ReusableMethods.bekle(1);
+            bekle(1);
 
             for (int i = 0; i < locate.basliklar.size(); i++) {
                 System.out.println("kitap ismi, yazar adı : " + locate.basliklar.get(i).getText()+" , "+locate.author.get(i).getText());
@@ -452,9 +455,9 @@ public class StepsYeniCikanKitaplar_Mali {
 
     @Given("UI alanında tum katagoriler basligini tiklar")
     public void uı_alanında_tum_katagoriler_basligini_tiklar() {
-        //locate.cookies.click();
+        bekle(1);
         locate.tumKatagorilerLink.click();
-        ReusableMethods.bekle(1);
+        bekle(1);
 
     }
     @Then("acilan sayfada_{string}_alani kitaplarini listeler")
@@ -467,7 +470,7 @@ public class StepsYeniCikanKitaplar_Mali {
                 saniyeBekler(2);
                 select = new Select(locate.sayfadayuzDDM);
                 select.selectByVisibleText("100 Ürün");
-                ReusableMethods.bekle(1);
+                bekle(1);
                 break;
 
 
@@ -478,7 +481,7 @@ public class StepsYeniCikanKitaplar_Mali {
                 saniyeBekler(2);
                 select = new Select(locate.sayfadayuzDDM);
                 select.selectByVisibleText("100 Ürün");
-                ReusableMethods.bekle(1);
+                bekle(1);
                 break;
 
 
@@ -489,7 +492,7 @@ public class StepsYeniCikanKitaplar_Mali {
                 saniyeBekler(2);
                 select = new Select(locate.sayfadayuzDDM);
                 select.selectByVisibleText("100 Ürün");
-                ReusableMethods.bekle(1);
+                bekle(1);
                 break;
 
 
@@ -500,7 +503,7 @@ public class StepsYeniCikanKitaplar_Mali {
                 saniyeBekler(2);
                 select = new Select(locate.sayfadayuzDDM);
                 select.selectByVisibleText("100 Ürün");
-                ReusableMethods.bekle(1);
+                bekle(1);
                 break;
 
 
@@ -511,7 +514,7 @@ public class StepsYeniCikanKitaplar_Mali {
                 saniyeBekler(2);
                 select = new Select(locate.sayfadayuzDDM);
                 select.selectByVisibleText("100 Ürün");
-                ReusableMethods.bekle(1);
+                bekle(1);
                 break;
             case "Psikoloji":
                 locate.psikoloji.click();
@@ -520,7 +523,7 @@ public class StepsYeniCikanKitaplar_Mali {
                 saniyeBekler(2);
                 select = new Select(locate.sayfadayuzDDM);
                 select.selectByVisibleText("100 Ürün");
-                ReusableMethods.bekle(1);
+                bekle(1);
                 break;
             case "Kultur":
                 locate.kultur.click();
@@ -529,7 +532,7 @@ public class StepsYeniCikanKitaplar_Mali {
                 saniyeBekler(2);
                 select = new Select(locate.sayfadayuzDDM);
                 select.selectByVisibleText("100 Ürün");
-                ReusableMethods.bekle(1);
+                bekle(1);
                 break;
 
 
@@ -541,7 +544,7 @@ public class StepsYeniCikanKitaplar_Mali {
 
     @And("listelenen sayfada ilk ve son kitaplari {string} databasede kontrol eder")
     public void listelenenSayfadaIlkVeSonKitaplariDatabasedeKontrolEder(String baslik) throws SQLException {
-        ReusableMethods.bekle(2);
+        bekle(2);
         System.out.println("locate.author.get(0).getText() = " + locate.author.get(0).getText());
         String actualData=locate.author.get(0).getText();
 

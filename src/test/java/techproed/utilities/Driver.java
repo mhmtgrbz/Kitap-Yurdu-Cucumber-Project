@@ -41,12 +41,16 @@ public class Driver {
         if (driver == null) {
             switch (ConfigReader.getProperty("browser")) {
                 case "chrome":
+                    // Bu satırı ekliyoruz:
+                    WebDriverManager.chromedriver().setup();
+
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--disable-popup-blocking");
                     options.addArguments("--disable-notifications");
-                    //options.setExperimentalOption("excludeSwitches", List.of("disable-popup-blocking"));
-                    driver = new ChromeDriver(options);
+                    // Eğer 4.8.3 gibi eski bir Selenium kullanıyorsanız aşağıdaki satır gerekebilir:
+                    options.addArguments("--remote-allow-origins=*");
 
+                    driver = new ChromeDriver(options);
                     break;
                 case "edge":
                     WebDriverManager.edgedriver().setup();

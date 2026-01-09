@@ -9,6 +9,7 @@ Feature: Creating database
     And UI alanında tum katagoriler basligini tiklar
     Then  acilan sayfada_"<baslik>"_alani kitaplarini listeler
     And listelenen sayfada ilk ve son kitaplari "<baslik>" databasede kontrol eder
+
     Examples:
       | baslik          |
       | Edebiyat        |
